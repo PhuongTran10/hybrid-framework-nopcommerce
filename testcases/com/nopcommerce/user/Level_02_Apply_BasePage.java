@@ -1,6 +1,9 @@
 package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
+
+import commons.BasePage;
+
 import org.testng.annotations.BeforeClass;
 
 import java.util.Random;
@@ -12,8 +15,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_01_Register_DRY {
+public class Level_02_Apply_BasePage {
 	WebDriver driver;
+	BasePage basePage;
 	String projectPath = System.getProperty("user.dir");
 	String emailAddress;
 
@@ -21,7 +25,7 @@ public class Level_01_Register_DRY {
 	public void beforeClass() {
 		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 		driver = new FirefoxDriver();
-		
+		basePage = new BasePage();
 		emailAddress = "abc"+ generateFakeNumber() +"@gmail.com";
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
@@ -59,7 +63,6 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123456");
 		driver.findElement(By.cssSelector("button#register-button")).click();
 		Assert.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(),"Your registration completed");
-
 	}
 	@Test
 	public void TC_04_Register_Existing_Email() {
