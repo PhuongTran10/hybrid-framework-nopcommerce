@@ -14,12 +14,18 @@ import org.testng.annotations.AfterClass;
 
 public class Level_01_Register_DRY {
 	WebDriver driver;
+	String osName = System.getProperty("os.name");
 	String projectPath = System.getProperty("user.dir");
 	String emailAddress;
 
 	@BeforeClass
 	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		if (osName.contains("Windows")) {
+			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		} else {
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+		}
+		
 		driver = new FirefoxDriver();
 		
 		emailAddress = "abc"+ generateFakeNumber() +"@gmail.com";

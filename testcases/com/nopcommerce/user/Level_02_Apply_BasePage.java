@@ -18,12 +18,17 @@ import org.testng.annotations.AfterClass;
 public class Level_02_Apply_BasePage {
 	WebDriver driver;
 	BasePage basePage;
+	String osName = System.getProperty("os.name");
 	String projectPath = System.getProperty("user.dir");
 	String emailAddress;
 
 	@BeforeClass
 	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		if (osName.contains("Windows")) {
+			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		} else {
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+		}
 		driver = new FirefoxDriver();
 		basePage = new BasePage();
 		emailAddress = "abc"+ generateFakeNumber() +"@gmail.com";
@@ -33,8 +38,10 @@ public class Level_02_Apply_BasePage {
 
 	@Test
 	public void TC_01_Register_Empty_Data() {
-		driver.findElement(By.cssSelector("a.ico-register")).click();
-		driver.findElement(By.cssSelector("button#register-button")).click();
+		basePage.waitForElementVisible(driver, "//a[@class=\"ico-register\"]");
+		basePage.clickToElement(driver, "//a[@class=\"ico-register\"]");
+		basePage.waitForElementVisible(driver, "//button[@id=\"register-button\"]");
+		basePage.clickToElement(driver, "//button[@id=\"register-button\"]");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#FirstName-error")).getText(),"First name is required.");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#LastName-error")).getText(),"Last name is required.");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(),"Email is required.");
