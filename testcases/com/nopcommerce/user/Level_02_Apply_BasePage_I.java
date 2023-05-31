@@ -56,11 +56,11 @@ public class Level_02_Apply_BasePage_I {
 		basePage.waitForElementVisible(driver, "//a[@class=\"ico-register\"]");
 		basePage.clickToElement(driver, "//a[@class=\"ico-register\"]");
 		
-		basePage.senkeyToElement(driver, "//input[@id='FirstName']", "Automation");
-		basePage.senkeyToElement(driver, "//input[@id='LastName']", "Testing");
-		basePage.senkeyToElement(driver, "//input[@id='Email']", "abc@123!@E");
-		basePage.senkeyToElement(driver, "//input[@id='Password']", "123456");
-		basePage.senkeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
+		basePage.sendkeyToElement(driver, "//input[@id='FirstName']", "Automation");
+		basePage.sendkeyToElement(driver, "//input[@id='LastName']", "Testing");
+		basePage.sendkeyToElement(driver, "//input[@id='Email']", "abc@123!@E");
+		basePage.sendkeyToElement(driver, "//input[@id='Password']", "123456");
+		basePage.sendkeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
 		
 		basePage.waitForElementVisible(driver, "//button[@id=\"register-button\"]");
 		basePage.clickToElement(driver, "//button[@id=\"register-button\"]");
@@ -72,11 +72,11 @@ public class Level_02_Apply_BasePage_I {
 		basePage.waitForElementVisible(driver, "//a[@class=\"ico-register\"]");
 		basePage.clickToElement(driver, "//a[@class=\"ico-register\"]");
 		
-		basePage.senkeyToElement(driver, "//input[@id='FirstName']", "Automation");
-		basePage.senkeyToElement(driver, "//input[@id='LastName']", "Testing");
-		basePage.senkeyToElement(driver, "//input[@id='Email']", emailAddress);
-		basePage.senkeyToElement(driver, "//input[@id='Password']", "123456");
-		basePage.senkeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
+		basePage.sendkeyToElement(driver, "//input[@id='FirstName']", "Automation");
+		basePage.sendkeyToElement(driver, "//input[@id='LastName']", "Testing");
+		basePage.sendkeyToElement(driver, "//input[@id='Email']", emailAddress);
+		basePage.sendkeyToElement(driver, "//input[@id='Password']", "123456");
+		basePage.sendkeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
 		
 		basePage.waitForElementVisible(driver, "//button[@id=\"register-button\"]");
 		driver.findElement(By.cssSelector("button#register-button")).click();
@@ -88,11 +88,11 @@ public class Level_02_Apply_BasePage_I {
 		basePage.waitForElementVisible(driver, "//a[@class=\"ico-register\"]");
 		basePage.clickToElement(driver, "//a[@class=\"ico-register\"]");
 		
-		basePage.senkeyToElement(driver, "//input[@id='FirstName']", "Automation");
-		basePage.senkeyToElement(driver, "//input[@id='LastName']", "Testing");
-		basePage.senkeyToElement(driver, "//input[@id='Email']", emailAddress);
-		basePage.senkeyToElement(driver, "//input[@id='Password']", "123456");
-		basePage.senkeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
+		basePage.sendkeyToElement(driver, "//input[@id='FirstName']", "Automation");
+		basePage.sendkeyToElement(driver, "//input[@id='LastName']", "Testing");
+		basePage.sendkeyToElement(driver, "//input[@id='Email']", emailAddress);
+		basePage.sendkeyToElement(driver, "//input[@id='Password']", "123456");
+		basePage.sendkeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
 		
 		basePage.waitForElementVisible(driver, "//button[@id=\"register-button\"]");
 		driver.findElement(By.cssSelector("button#register-button")).click();
@@ -104,11 +104,11 @@ public class Level_02_Apply_BasePage_I {
 		basePage.waitForElementVisible(driver, "//a[@class=\"ico-register\"]");
 		basePage.clickToElement(driver, "//a[@class=\"ico-register\"]");
 		
-		basePage.senkeyToElement(driver, "//input[@id='FirstName']", "Automation");
-		basePage.senkeyToElement(driver, "//input[@id='LastName']", "Testing");
-		basePage.senkeyToElement(driver, "//input[@id='Email']", emailAddress);
-		basePage.senkeyToElement(driver, "//input[@id='Password']", "12345");
-		basePage.senkeyToElement(driver, "//input[@id='ConfirmPassword']", "12345");
+		basePage.sendkeyToElement(driver, "//input[@id='FirstName']", "Automation");
+		basePage.sendkeyToElement(driver, "//input[@id='LastName']", "Testing");
+		basePage.sendkeyToElement(driver, "//input[@id='Email']", emailAddress);
+		basePage.sendkeyToElement(driver, "//input[@id='Password']", "12345");
+		basePage.sendkeyToElement(driver, "//input[@id='ConfirmPassword']", "12345");
 		
 		basePage.waitForElementVisible(driver, "//button[@id=\"register-button\"]");
 		driver.findElement(By.cssSelector("button#register-button")).click();
@@ -120,11 +120,11 @@ public class Level_02_Apply_BasePage_I {
 		basePage.waitForElementVisible(driver, "//a[@class=\"ico-register\"]");
 		basePage.clickToElement(driver, "//a[@class=\"ico-register\"]");
 		
-		basePage.senkeyToElement(driver, "//input[@id='FirstName']", "Automation");
-		basePage.senkeyToElement(driver, "//input[@id='LastName']", "Testing");
-		basePage.senkeyToElement(driver, "//input[@id='Email']", emailAddress);
-		basePage.senkeyToElement(driver, "//input[@id='Password']", "123456");
-		basePage.senkeyToElement(driver, "//input[@id='ConfirmPassword']", "12345");
+		basePage.sendkeyToElement(driver, "//input[@id='FirstName']", "Automation");
+		basePage.sendkeyToElement(driver, "//input[@id='LastName']", "Testing");
+		basePage.sendkeyToElement(driver, "//input[@id='Email']", emailAddress);
+		basePage.sendkeyToElement(driver, "//input[@id='Password']", "123456");
+		basePage.sendkeyToElement(driver, "//input[@id='ConfirmPassword']", "123457");
 		
 		basePage.waitForElementVisible(driver, "//button[@id=\"register-button\"]");
 		driver.findElement(By.cssSelector("button#register-button")).click();

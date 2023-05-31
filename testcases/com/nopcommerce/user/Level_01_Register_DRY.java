@@ -97,7 +97,7 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("input#LastName")).sendKeys("Testing");
 		driver.findElement(By.cssSelector("input#Email")).sendKeys(emailAddress);
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
-		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("12345");
+		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123457");
 		driver.findElement(By.cssSelector("button#register-button")).click();
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#ConfirmPassword-error")).getText(),"The password and confirmation password do not match.");
 		
