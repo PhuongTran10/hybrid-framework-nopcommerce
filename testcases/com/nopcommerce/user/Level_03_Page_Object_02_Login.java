@@ -4,9 +4,13 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 import pageObjects.HomePageObject;
+import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
+import pageUIs.HomePageUI;
 
 import org.testng.annotations.BeforeClass;
+
+import static org.testng.Assert.assertEquals;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +37,9 @@ public class Level_03_Page_Object_02_Login {
 				
 		firstName = "Automation";
 		lastName = "Testing";
-		emailAddress = "abc"+ generateFakeNumber() +"@gmail.com";
+		existingEmail = "abc"+ generateFakeNumber() + "@gmail.com";
+		invalidEmail = "abc@abc.123@132";
+		notFoundEmail = "abc"+ generateFakeNumber() + "@gmail.vn";
 		password = "123456";
 		
 		System.out.println("Pre-Condition - Step 01: Click to Register Link");
@@ -43,7 +49,7 @@ public class Level_03_Page_Object_02_Login {
 		System.out.println("Pre-Condition - Step 02: Input data to required fields");
 		registerPage.inputToFirstnameTextbox(firstName);
 		registerPage.inputToLastnameTextbox(lastName);
-		registerPage.inputToEmailTextbox(emailAddress);
+		registerPage.inputToEmailTextbox(existingEmail);
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(password);
 		
@@ -56,9 +62,23 @@ public class Level_03_Page_Object_02_Login {
 
 	@Test
 	public void Login_01_Empty_Data() {
+		homePage.clickToLoginLink();
+		loginPage = new LoginPageObject(driver);
+		
+		loginPage.clickToLoginButton();
+		
+		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
 		
 	}
 	public void Login_02_Invalid_Email() {
+		homePage.clickToLoginLink();
+		loginPage = new LoginPageObject(driver);
+		loginPage.inputToEmailTextbox(invalidEmail);
+		loginPage.inputToPasswordTextbox(password);
+		
+		loginPage.clickToLoginButton();
+		
+		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Wrong email");
 		
 	}
 	public void Login_03_Email_Not_Found() {
@@ -84,9 +104,10 @@ public class Level_03_Page_Object_02_Login {
 	}
 	
 	private WebDriver driver;
-	private String firstName, lastName, emailAddress, password;
+	private String firstName, lastName, invalidEmail, notFoundEmail, existingEmail, password;
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
+	private LoginPageObject loginPage;
 	private String osName = System.getProperty("os.name");
 	private String projectPath = System.getProperty("user.dir");
 }
