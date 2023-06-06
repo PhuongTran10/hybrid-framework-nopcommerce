@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 
 import commons.BasePage;
+import pageUIs.HomePageUI;
 import pageUIs.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
@@ -77,6 +78,16 @@ public class RegisterPageObject extends BasePage {
 	public String getErrorExistingEmailMessage() {
 		waitForElementVisible(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
 		return getElementText(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
+	}
+	
+	public void clickToLogoutLink() {
+		waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
+		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
+	}
+
+	public boolean isLoginLinkDisplayed() {
+		waitForElementVisible(driver, RegisterPageUI.LOGIN_LINK);
+		return isElementDisplayed(driver, RegisterPageUI.LOGIN_LINK);
 	}
 
 }
