@@ -20,9 +20,8 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName, projectPath);
+		driver = getBrowserDriver(browserName);
 		homePage = new HomePageObject(driver);
-		
 		firstName = "Automation";
 		lastName = "Testing";
 		emailAddress = "abc"+ generateFakeNumber() +"@gmail.com";
@@ -162,5 +161,4 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	private String firstName, lastName, emailAddress, password;
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	private String projectPath = System.getProperty("user.dir");
 }
