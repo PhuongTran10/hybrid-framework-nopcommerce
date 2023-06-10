@@ -37,7 +37,7 @@ public class BaseTest {
 			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
 			driver = new ChromeDriver(options); 
 		}else if(browserName.equals("opera")) {
-			WebDriverManager.operadriver().driverVersion("112.0.5615.87").setup();
+			WebDriverManager.operadriver().setup();
 			driver = new OperaDriver();
 		}else {
 			throw new RuntimeException("Browser name invalid");
