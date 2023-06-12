@@ -7,7 +7,7 @@
       <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
     </classes>
   </test> 
- <test name="Run on Headless Firefox">
+<!-- <test name="Run on Headless Firefox">
 	<parameter name="browser" value="h_firefox"/>
     <classes>
       <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
@@ -30,12 +30,12 @@
     <classes>
       <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
     </classes>
-  </test> -->
+  </test> 
  <test name="Run on Opera">
 	<parameter name="browser" value="opera"/>
     <classes>
       <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
     </classes>
-  </test> 
+  </test> -->
   
 </suite> 
