@@ -3,20 +3,17 @@ package com.nopcommerce.user;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageFactory.nopCommerce.HomePageObject;
-import pageFactory.nopCommerce.LoginPageObject;
-import pageFactory.nopCommerce.RegisterPageObject;
+import pageObjects.nopCommerce.HomePageObject;
+import pageObjects.nopCommerce.LoginPageObject;
+import pageObjects.nopCommerce.RegisterPageObject;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
-
-import java.util.Random;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_05_Page_Factory extends BaseTest{
+public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -121,11 +118,7 @@ public class Level_05_Page_Factory extends BaseTest{
 		homePage = new HomePageObject(driver);
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}
-	
-	public int generateFakeNumber() {
-		Random rand = new Random();
-		return rand.nextInt(9999);
-	}
+
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
@@ -136,5 +129,4 @@ public class Level_05_Page_Factory extends BaseTest{
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
-
 }
