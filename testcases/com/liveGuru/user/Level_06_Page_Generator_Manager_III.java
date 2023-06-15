@@ -22,20 +22,35 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest{
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getHomPage(driver);
-		
+		emailValid = "abc" + generateFakeNumber() + "@gmail.com";
+		password = "123456";
 	}
 	
 	@Test
 	public void User_01_Register_To_System() {
 		loginPage = homePage.clickToMyAccountLink();
 		registerPage = loginPage.clickToCreateAnAccountButton();
-		registerPage.inputToFirstNameTextbox();
+		registerPage.inputToFirstNameTextbox("Automation");
+		registerPage.inputToLastNameTextbox("Testing");
+		registerPage.inputToEmailAddressTextbox(emailValid);
+		registerPage.inputToPasswordTextbox(password);
+		registerPage.inputToConfirmPasswordTextbox(password);
+		myDashboardPage = registerPage.clickToRegisterButton();
 		
+		Assert.assertEquals(myDashboardPage.getRegisterSuccessMessage(), "Thank you for registering with Main Website Store.");
+		
+		myDashboardPage.clickToAccountLink();
+		homePage = myDashboardPage.clickToLogoutlink();
 		
 	}
 	@Test
 	public void User_02_Login_To_System() {
+		loginPage = homePage.clickToMyAccountLink();
+		loginPage.inputToEmailAddressTextbox(emailValid);
+		loginPage.inputToPasswordTextbox(password);
+		myDashboardPage = loginPage.clickTologinButton();
 		
+		Assert.assertTrue(myDashboardPage.isAccountInformationLinkDisplayed());
 	}
 	
 
@@ -49,6 +64,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest{
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
 	private MyDashboardPageObject myDashboardPage;
+	private String emailValid, password; 
 
 	
 }
