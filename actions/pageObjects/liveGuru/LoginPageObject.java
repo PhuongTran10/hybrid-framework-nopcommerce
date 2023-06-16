@@ -29,6 +29,7 @@ public class LoginPageObject extends BasePage {
 
 	public MyDashboardPageObject clickTologinButton() {
 		waitForElementVisible(driver, LoginPageUI.LOGIN_BUTTON);
+		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
 		return PageGeneratorManager.getMyDashboardPage(driver);
 	}
 	private WebDriver driver;
