@@ -1,25 +1,35 @@
 package pageObjects.liveGuru;
 
-public class MyDashboardPageObject {
+import org.openqa.selenium.WebDriver;
+
+import commons.BasePage;
+import pageUIs.liveGuru.MyDashboardPageUI;
+
+public class MyDashboardPageObject extends BasePage {
+
+	public MyDashboardPageObject(WebDriver driver) {
+		this.driver = driver;
+	}
 
 	public void clickToAccountLink() {
-		// TODO Auto-generated method stub
-		
+		waitForElementVisible(driver, MyDashboardPageUI.ACCOUNT_LINK);
+		clickToElement(driver, MyDashboardPageUI.ACCOUNT_LINK);
 	}
 
 	public HomePageObject clickToLogoutlink() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, MyDashboardPageUI.LOGOUT_LINK);
+		clickToElement(driver, MyDashboardPageUI.LOGOUT_LINK);
+		return PageGeneratorManager.getHomPage(driver);
 	}
 
 	public boolean isAccountInformationLinkDisplayed() {
-		// TODO Auto-generated method stub
-		return false;
+		waitForElementVisible(driver, MyDashboardPageUI.ACCOUNT_INFORMATION_LINK);
+		return isElementDisplayed(driver, MyDashboardPageUI.ACCOUNT_INFORMATION_LINK);
 	}
 
 	public String getRegisterSuccessMessage() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, MyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
+		return getElementText(driver, MyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
-
+	private WebDriver driver;
 }

@@ -46,7 +46,7 @@ public class BaseTest {
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://demo.nopcommerce.com/");
+		driver.get("http://live.techpanda.org/");
 		return driver;
 	}
 	protected int generateFakeNumber() {
