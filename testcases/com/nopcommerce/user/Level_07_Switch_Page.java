@@ -3,11 +3,14 @@ package com.nopcommerce.user;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.CustomerInforPageObject;
-import pageObjects.nopCommerce.PageGeneratorManager;
-import pageObjects.nopCommerce.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.nopCommerce.user.UserAddressPageObject;
+import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
+import pageObjects.nopCommerce.user.UserRewardPointPageObject;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -21,7 +24,7 @@ public class Level_07_Switch_Page extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		firstName = "Automation";
 		lastName = "Testing";
@@ -38,13 +41,12 @@ public class Level_07_Switch_Page extends BaseTest{
 		registerPage.inputToEmailTextbox(existingEmail);
 		registerPage.inputToPasswordTextbox(validPassword);
 		registerPage.inputToConfirmPasswordTextbox(validPassword);
-		registerPage.clickToRegisterButton();
+		homePage = registerPage.clickToRegisterButton();
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(),"Your registration completed");
 		
 		if(!registerPage.isLoginLinkDisplayed()) {
 			homePage = registerPage.clickToLogoutLink();
-		}
-		
+		}	
 	}
 	@Test
 	public void User_02_Login() {
@@ -63,11 +65,16 @@ public class Level_07_Switch_Page extends BaseTest{
 
 	}
 	@Test
-	public void User_04_Switch_Role() {
-		
+	public void User_04_Switch_Page() {
+		 addressPage = customerInforPage.openAddressPage(driver);
+		 Assert.assertEquals(addressPage.getAddressHeaderText(),"My account - Addresses");
+		 
+		 myProductReviewPage = addressPage.openMyProductReviewPage(driver);
+		 addressPage = myProductReviewPage.openAddressPage(driver);
+		 rewardPointPage = addressPage.openRewardPointPage(driver);
+		 customerInforPage = rewardPointPage.openCustomerInforPage(driver);
 	}
 	
-
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
@@ -75,8 +82,11 @@ public class Level_07_Switch_Page extends BaseTest{
 	
 	private WebDriver driver;
 	private String firstName, lastName, existingEmail, validPassword;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
-	private CustomerInforPageObject customerInforPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
+	private UserCustomerInforPageObject customerInforPage;
+	private UserAddressPageObject addressPage;
+	private UserMyProductReviewPageObject myProductReviewPage;
+	private UserRewardPointPageObject rewardPointPage;
 }

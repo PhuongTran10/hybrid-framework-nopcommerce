@@ -3,9 +3,9 @@ package com.nopcommerce.user;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -19,7 +19,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 				
 		firstName = "Automation";
 		lastName = "Testing";
@@ -31,7 +31,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 		
 		System.out.println("Pre-Condition - Step 01: Click to Register Link");
 		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 		
 		System.out.println("Pre-Condition - Step 02: Input data to required fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -50,7 +50,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 			System.out.println("Pre-Condition - Step 05: Click to Logout link");
 			registerPage.clickToLogoutLink();
 			
-			homePage = new HomePageObject(driver);
+			homePage = new UserHomePageObject(driver);
 		}
 		
 	}
@@ -58,7 +58,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	@Test
 	public void Login_01_Empty_Data() {
 		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		
 		loginPage.clickToLoginButton();
 		
@@ -68,7 +68,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	@Test
 	public void Login_02_Invalid_Email() {
 		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.inputToPasswordTextbox(validPassword);
 		
@@ -80,7 +80,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	@Test
 	public void Login_03_Email_Not_Found() {
 		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(notFoundEmail);
 
 		loginPage.clickToLoginButton();
@@ -90,7 +90,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	@Test
 	public void Login_04_Existing_Email_Empty_Password() {
 		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("");
 		
@@ -100,7 +100,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	@Test
 	public void Login_05_Existing_Email_Incorrect_Password() {
 		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(incorrectPassword);
 		
@@ -110,12 +110,12 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	@Test
 	public void Login_06_Valid_Email_Password() {
 		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(validPassword);
 		
 		loginPage.clickToLoginButton();
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}
 
@@ -126,7 +126,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest{
 	
 	private WebDriver driver;
 	private String firstName, lastName, invalidEmail, notFoundEmail, existingEmail, validPassword, incorrectPassword;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
 }
