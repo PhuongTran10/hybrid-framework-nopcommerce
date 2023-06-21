@@ -11,7 +11,7 @@ public class UserAddressPageObject extends BasePage{
 		this.driver = driver;
 	}
 	public String getAddressHeaderText() {
-		waitForElementVisible(driver, UserBasePageUI.ADDRESS_HEADER);
-		return getElementText(driver, UserBasePageUI.ADDRESS_HEADER);
+		waitForElementVisible(driver, UserBasePageUI.PAGE_HEADER);
+		return getElementText(driver, UserBasePageUI.PAGE_HEADER);
 	}
 }

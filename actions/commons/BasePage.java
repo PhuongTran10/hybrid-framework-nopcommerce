@@ -128,9 +128,9 @@ public class BasePage {
 	}
 	
 	private String getDynamicXpath(String dynamicLocator, String... dynamicValues) {
-		if(dynamicLocator.startsWith("xpath")||dynamicLocator.startsWith("XPATH=")||dynamicLocator.startsWith("Xpath=")||dynamicLocator.startsWith("XPath=")) {
+//	if(dynamicLocator.startsWith("xpath")||dynamicLocator.startsWith("XPATH=")||dynamicLocator.startsWith("Xpath=")||dynamicLocator.startsWith("XPath=")) {
 		   dynamicLocator = String.format(dynamicLocator, (Object[]) dynamicValues);
-		}
+//	}
 		return dynamicLocator;
 	}
 	private WebElement getWebElement(WebDriver driver, String locatorType) {
@@ -141,9 +141,9 @@ public class BasePage {
 		return driver.findElements(getByLocator(locatorType));
 	}
 	
-	public void clickToElement(WebDriver driver, String locatorType) {
-		getWebElement(driver, locatorType).click();
-	}
+//	public void clickToElement(WebDriver driver, String locatorType) {
+//		getWebElement(driver, locatorType).click();
+//	}
 	
 	public void clickToElement(WebDriver driver, String locatorType, String... dynamicValues) {
 		getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).click();
@@ -213,6 +213,7 @@ public class BasePage {
 	public String getElementAttribute(WebDriver driver, String locatorType, String attributeName) {
 		return getWebElement(driver, locatorType).getAttribute(attributeName);
 	}
+	
 	public String getElementAttribute(WebDriver driver, String locatorType, String attributeName, String... dynamicValues) {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getAttribute(attributeName);
 	}
@@ -220,12 +221,17 @@ public class BasePage {
 	public String getElementText(WebDriver driver, String locatorType) {
 		return getWebElement(driver, locatorType).getText();
 	}
+	
 	public String getElementText(WebDriver driver, String locatorType, String... dynamicValues) {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getText();
 	}
 	
 	public String getElementCssValue(WebDriver driver, String locatorType, String propertyName) {
 		return getWebElement(driver, locatorType).getCssValue(propertyName);
+	}
+	
+	public String getElementCssValue(WebDriver driver, String locatorType, String propertyName, String... dynamicValues) {
+		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getCssValue(propertyName);
 	}
 	
 	public String getHexaColorFromRGBA(String rgbaValue) {
@@ -266,8 +272,16 @@ public class BasePage {
 		return getWebElement(driver, locatorType).isEnabled();
 	}
 	
+	public boolean isElementEnabled(WebDriver driver, String locatorType, String... dynamicValues) {
+		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isEnabled();
+	}
+	
 	public boolean isElementSelected(WebDriver driver, String locatorType) {
 		return getWebElement(driver, locatorType).isSelected();
+	}
+	
+	public boolean isElementSelected(WebDriver driver, String locatorType, String... dynamicValues) {
+		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isSelected();
 	}
 	
 	public void switchToFrameIframe(WebDriver driver, String locatorType) {
@@ -421,26 +435,58 @@ public class BasePage {
 		clickToElement(driver, UserBasePageUI.CUSTOMER_INFOR_LINK);
 		return PageGeneratorManager.getUserCustomerInforPage(driver);
 	}
+	
 	public UserAddressPageObject openAddressPage(WebDriver driver) {
 		waitForElementVisible(driver, UserBasePageUI.ADDRESS_LINK);
 		clickToElement(driver, UserBasePageUI.ADDRESS_LINK);
 		return PageGeneratorManager.getUserAddressPage(driver);
 	}
+	
 	public UserMyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
 		waitForElementVisible(driver, UserBasePageUI.MY_PRODUCT_REVIEWS_LINK);
 		clickToElement(driver, UserBasePageUI.MY_PRODUCT_REVIEWS_LINK);
 		return PageGeneratorManager.getUserMyProductReviewPage(driver);
 	}
+	
 	public UserRewardPointPageObject openRewardPointPage(WebDriver driver) {
 		waitForElementVisible(driver, UserBasePageUI.REWARD_POINTS_LINK);
 		clickToElement(driver, UserBasePageUI.REWARD_POINTS_LINK);
 		return PageGeneratorManager.getUserRewardPointPage(driver);
 	}
+	
+	public BasePage openPagesAtMyAccountsByName(WebDriver driver, String pageName) {
+		waitForElementVisible(driver, UserBasePageUI.DYNAMIC_PAGES_AT_MY_ACCOUNT_AREA, pageName);
+		clickToElement(driver, UserBasePageUI.DYNAMIC_PAGES_AT_MY_ACCOUNT_AREA, pageName);
+		switch (pageName) {
+		case "Customer info":
+			return PageGeneratorManager.getUserCustomerInforPage(driver);
+		case "Addresses":
+			return PageGeneratorManager.getUserAddressPage(driver);
+		case "Reward points":
+			return PageGeneratorManager.getUserRewardPointPage(driver);
+		case "My product reviews":
+			return PageGeneratorManager.getUserMyProductReviewPage(driver);
+		default:
+			throw new RuntimeException("Invalid page name at My Account area");
+		}
+	}
+	
+	public void openPagesAtMyAccountsByPageName(WebDriver driver, String pageName) {
+		waitForElementVisible(driver, UserBasePageUI.DYNAMIC_PAGES_AT_MY_ACCOUNT_AREA, pageName);
+		clickToElement(driver, UserBasePageUI.DYNAMIC_PAGES_AT_MY_ACCOUNT_AREA, pageName);
+	}
+	
+	public String getHeaderText(WebDriver driver) {
+		waitForElementVisible(driver, UserBasePageUI.PAGE_HEADER);
+		return getElementText(driver, UserBasePageUI.PAGE_HEADER);
+	}
+	
 	public UserHomePageObject clickToLogoutLinkAtUserPage(WebDriver driver) {
 		waitForElementVisible(driver, UserBasePageUI.LOGOUT_LINK);
 		clickToElement(driver, UserBasePageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getUserHomePage(driver);
 	}
+	
 	public AdminLoginPageObject clickToLogoutLinkAtAdminPage(WebDriver driver) {
 		waitForElementInVisible(driver, AdminBasePageUI.LOADING_HEADER);
 		waitForElementVisible(driver, AdminBasePageUI.LOGOUT_LINK);
@@ -453,4 +499,3 @@ public class BasePage {
 	
 
 }
-

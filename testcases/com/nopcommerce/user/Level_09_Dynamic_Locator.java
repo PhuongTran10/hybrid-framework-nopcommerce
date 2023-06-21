@@ -60,7 +60,7 @@ public class Level_09_Dynamic_Locator extends BaseTest{
 
 	}
 	@Test
-	public void User_02_Dynamic_Page() {
+	public void User_02_Switch_Page() {
 		 addressPage = customerInforPage.openAddressPage(driver);
 		 Assert.assertEquals(addressPage.getAddressHeaderText(),"My account - Addresses");
 		 
@@ -68,6 +68,39 @@ public class Level_09_Dynamic_Locator extends BaseTest{
 		 addressPage = myProductReviewPage.openAddressPage(driver);
 		 rewardPointPage = addressPage.openRewardPointPage(driver);
 		 customerInforPage = rewardPointPage.openCustomerInforPage(driver);
+	}
+	@Test
+	public void User_03_Dynamic_Page_01() {
+		addressPage = (UserAddressPageObject) customerInforPage.openPagesAtMyAccountsByName(driver, "Addresses");
+		Assert.assertEquals(addressPage.getAddressHeaderText(),"My account - Addresses");
+		
+		myProductReviewPage = (UserMyProductReviewPageObject) addressPage.openPagesAtMyAccountsByName(driver, "My product reviews");
+		addressPage = (UserAddressPageObject) myProductReviewPage.openPagesAtMyAccountsByName(driver, "Addresses");
+		rewardPointPage = (UserRewardPointPageObject) addressPage.openPagesAtMyAccountsByName(driver, "Reward points");
+		customerInforPage = (UserCustomerInforPageObject) rewardPointPage.openPagesAtMyAccountsByName(driver, "Customer info");
+	}
+	
+	@Test
+	public void User_03_Dynamic_Page_02() {
+		customerInforPage.openPagesAtMyAccountsByPageName(driver, "Addresses");
+		addressPage = PageGeneratorManager.getUserAddressPage(driver);
+		Assert.assertEquals(addressPage.getAddressHeaderText(),"My account - Addresses");
+		
+		addressPage.openPagesAtMyAccountsByName(driver, "My product reviews");
+		myProductReviewPage = PageGeneratorManager.getUserMyProductReviewPage(driver);
+		Assert.assertEquals(myProductReviewPage.getHeaderText(driver),"My account - My product reviews");
+		
+		myProductReviewPage.openPagesAtMyAccountsByName(driver, "Addresses");
+		addressPage = PageGeneratorManager.getUserAddressPage(driver);
+		Assert.assertEquals(addressPage.getHeaderText(driver),"My account - Addresses");
+		
+		addressPage.openPagesAtMyAccountsByName(driver, "Reward points");
+		rewardPointPage = PageGeneratorManager.getUserRewardPointPage(driver);
+		Assert.assertEquals(rewardPointPage.getHeaderText(driver),"My account - Reward points");
+		
+		rewardPointPage.openPagesAtMyAccountsByName(driver, "Customer info");
+		customerInforPage = PageGeneratorManager.getUserCustomerInforPage(driver);
+		Assert.assertEquals(customerInforPage.getHeaderText(driver),"My account - Customer info");
 	}
 	
 	@AfterClass
