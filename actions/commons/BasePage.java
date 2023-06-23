@@ -57,8 +57,7 @@ public class BasePage {
 	}
 	
 	public Alert waitForAlertPresence(WebDriver driver) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
-		return explicitWait.until(ExpectedConditions.alertIsPresent());
+		return new WebDriverWait(driver, longTimeout).until(ExpectedConditions.alertIsPresent());
 	}
 	
 	public void acceptAlert(WebDriver driver) {
@@ -494,7 +493,7 @@ public class BasePage {
 		return PageGeneratorManager.getAdminLoginPage(driver);
 	}
 	
-	private long longTimeout = 30;
+	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	
 	
 
