@@ -49,7 +49,7 @@ public class BaseTest {
 		driver.get(GlobalConstants.USER_DEV_URL);
 		return driver;
 	}
-	protected WebDriver getBrowserDriver(String browserName, String environment) {
+	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
 		System.out.println("Run on " + browserName);
 		
 		if(browserName.equals("firefox")) {
@@ -81,7 +81,7 @@ public class BaseTest {
 		
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get(getEnvironmentUrl(environment));
+		driver.get(appUrl);
 		return driver;
 	}
 	protected String getEnvironmentUrl(String environmentName) {
