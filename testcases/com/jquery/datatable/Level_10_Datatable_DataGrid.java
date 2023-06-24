@@ -1,5 +1,8 @@
 package com.jquery.datatable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -39,7 +42,7 @@ public class Level_10_Datatable_DataGrid extends BaseTest{
 		 homePage.enterToHeaderTextboxByLabel("Females","Seychelles");
 		 homePage.enterToHeaderTextboxByLabel("Males","651");
 		 homePage.enterToHeaderTextboxByLabel("Total","1270");
-		 
+		 List<String> a =new ArrayList<String>();
 	}
 	
 	@AfterClass
