@@ -109,7 +109,7 @@ public class BasePage {
 		}
 	}
 	
-	private By getByLocator(String locatorType) {
+	public By getByLocator(String locatorType) {
 		By by = null;
 		if(locatorType.startsWith("id=")||locatorType.startsWith("ID=")||locatorType.startsWith("Id=")) {
 			by = By.id(locatorType.substring(3));
@@ -127,18 +127,18 @@ public class BasePage {
 		return by;
 	}
 	
-	private String getDynamicXpath(String dynamicLocator, String... dynamicValues) {
+	public String getDynamicXpath(String dynamicLocator, String... dynamicValues) {
 		return String.format(dynamicLocator, (Object[]) dynamicValues);
 	}
 	
-	private WebElement getWebElement(WebDriver driver, String locatorType) {
+	public WebElement getWebElement(WebDriver driver, String locatorType) {
 		return driver.findElement(getByLocator(locatorType));
 	}
 	
-	private List<WebElement> getListWebElement(WebDriver driver, String locatorType) {
+	public List<WebElement> getListWebElement(WebDriver driver, String locatorType) {
 		return driver.findElements(getByLocator(locatorType));
 	}
-	
+
 	public void clickToElement(WebDriver driver, String locatorType) {
 		getWebElement(driver, locatorType).click();
 	}
@@ -403,7 +403,7 @@ public class BasePage {
 		return PageGeneratorManager.getAdminLoginPage(driver);
 	}
 	
-	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
+	public long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	
 	
 
