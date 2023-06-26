@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="NopCommerce">
 	
- <!--<test name="Run on Firefox">
+<!--<test name="Run on Firefox">
 	<parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.liveGuru.user.Level_06_Page_Generator_Manager_III"/>
+      <class name="com.liveGuru.user.Level_10_Data_Table"/>
     </classes>
   </test> -->
 <!-- <test name="Run on Headless Firefox">
@@ -16,7 +16,7 @@
   <test name="Run on Chrome">
 	<parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.liveGuru.user.Level_06_Page_Generator_Manager_III"/>
+      <class name="com.liveGuru.user.Level_10_Data_Table"/>
     </classes>
   </test> 
  <!-- <test name="Run on Edge">

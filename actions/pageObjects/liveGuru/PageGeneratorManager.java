@@ -16,5 +16,8 @@ public class PageGeneratorManager {
 	public static LoginPageObject getLoginPage(WebDriver driver) {
 		return new LoginPageObject(driver);
 	}
+	public static AdminLoginPageObject getAdminLoginPage(WebDriver driver) {
+		return new AdminLoginPageObject(driver);
+	}
 
 }

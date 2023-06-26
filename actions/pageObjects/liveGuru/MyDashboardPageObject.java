@@ -32,4 +32,5 @@ public class MyDashboardPageObject extends BasePage {
 		return getElementText(driver, MyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 	private WebDriver driver;
+
 }

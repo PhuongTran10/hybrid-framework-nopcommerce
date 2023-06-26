@@ -54,13 +54,36 @@ public class Level_10_Datatable_DataGrid extends BaseTest{
 		 homePage.enterToHeaderTextboxByLabel("Total","553353");
 		 homePage.sleepInSecond(1);
 	}
-	@Test
+	//@Test
 	public void Table_03_Enter_To_Header_Verify_All_Data() {
 		homePage.openAllPage();
 	}
+	
+	@Test
+	public void Table_04_Action_At_Any_Row() {
+		homePage.clickToLoadButton();
+		homePage.sleepInSecond(2);
+		homePage.enterToTextboxByColumnNameAtRowNumber("Company", "1", "HVG");
+		homePage.enterToTextboxByColumnNameAtRowNumber("Contact Person", "3", "Michael 97");
+		homePage.enterToTextboxByColumnNameAtRowNumber("Order Placed", "4", "Sysney");
+		homePage.selectDropdownByColumnNameAtRowNumber("Country","5","Japan");
+		homePage.sleepInSecond(2);
+		homePage.selectDropdownByColumnNameAtRowNumber("Country","1","Hong Kong");
+		homePage.checkToCheckboxByColumnNameAtRowNumber("NPO?", "3");
+		homePage.checkToCheckboxByColumnNameAtRowNumber("NPO?", "4");
+		homePage.unCheckToCheckboxByColumnNameAtRowNumber("NPO?", "1");
+		homePage.unCheckToCheckboxByColumnNameAtRowNumber("NPO?", "5");
+		homePage.clickToIconByRowNumber("1","Remove Current Row");
+		homePage.sleepInSecond(2);
+		homePage.clickToIconByRowNumber("1","Insert Row Above");
+		homePage.sleepInSecond(2);
+		homePage.clickToIconByRowNumber("3","Move Up");
+		
+	}
+	
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		//driver.quit();
 	}
 	private WebDriver driver;
 	private HomePageObject homePage;
