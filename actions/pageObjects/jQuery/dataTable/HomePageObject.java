@@ -1,4 +1,4 @@
-package pageObjects.jQuery;
+package pageObjects.jQuery.dataTable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import commons.BasePage;
-import pageUIs.jQuery.HomePageUI;
+import pageUIs.jQuery.dataTable.HomePageUI;
 
 public class HomePageObject extends BasePage{
 	WebDriver driver;
@@ -32,7 +32,7 @@ public class HomePageObject extends BasePage{
 	public void enterToHeaderTextboxByLabel(String headerLabel, String value) {
 		waitForElementClickable(driver, HomePageUI.HEADER_TEXTBOX_BY_LABEL, headerLabel);
 		sendkeyToElement(driver, HomePageUI.HEADER_TEXTBOX_BY_LABEL, value, headerLabel);
-		senKeyBoardToElement(driver, HomePageUI.HEADER_TEXTBOX_BY_LABEL, Keys.RETURN, headerLabel);
+		sendKeyBoardToElement(driver, HomePageUI.HEADER_TEXTBOX_BY_LABEL, Keys.RETURN, headerLabel);
 	}
 
 	public List<String> openAllPage() {

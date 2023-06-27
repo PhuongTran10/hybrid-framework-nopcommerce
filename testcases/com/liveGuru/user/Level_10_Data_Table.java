@@ -26,6 +26,8 @@ public class Level_10_Data_Table extends BaseTest{
 		homePage = PageGeneratorManager.getHomPage(driver);
 		emailValid = "abc" + generateFakeNumber() + "@gmail.com";
 		password = "123456";
+		userName = "Automation Testing";
+		
 	}
 	
 	@Test
@@ -45,13 +47,14 @@ public class Level_10_Data_Table extends BaseTest{
 		adminLoginPage.loginAsAdmin("user01","guru99com");
 		adminLoginPage.closeIncomingMessage();
 		adminLoginPage.enterToHeaderTextboxByName("Email", emailValid);
+		Assert.assertTrue(adminLoginPage.isNameAndEmailSearchedDisplayed(userName, emailValid));
 		
 	}
 	
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+	driver.quit();
 	}
 	
 	private WebDriver driver;
@@ -60,7 +63,7 @@ public class Level_10_Data_Table extends BaseTest{
 	private LoginPageObject loginPage;
 	private MyDashboardPageObject myDashboardPage;
 	private AdminLoginPageObject adminLoginPage;
-	private String emailValid, password; 
+	private String emailValid, password, userName; 
 
 	
 }

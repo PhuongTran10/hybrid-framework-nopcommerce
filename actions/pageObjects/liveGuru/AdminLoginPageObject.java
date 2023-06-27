@@ -1,10 +1,10 @@
 package pageObjects.liveGuru;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import pageUIs.liveGuru.AdminLoginPageUI;
-import pageUIs.nopCommerce.admin.AdminBasePageUI;
 
 public class AdminLoginPageObject extends BasePage{
 	private WebDriver driver;
@@ -41,7 +41,13 @@ public class AdminLoginPageObject extends BasePage{
 	public void enterToHeaderTextboxByName(String columnName, String value) {
 		int columnIndex = getElementSize(driver, AdminLoginPageUI.COLUMN_INDEX_BY_NAME, columnName) + 1;
 		waitForElementVisible(driver,  AdminLoginPageUI.HEADER_TEXTBOX_BY_COLUMN_INDEX, String.valueOf(columnIndex));
-		sendkeyToElement(driver, AdminLoginPageUI.HEADER_TEXTBOX_BY_COLUMN_INDEX, String.valueOf(columnIndex), value);
+		sendkeyToElement(driver, AdminLoginPageUI.HEADER_TEXTBOX_BY_COLUMN_INDEX, value,String.valueOf(columnIndex));
+		sendKeyBoardToElement(driver, AdminLoginPageUI.HEADER_TEXTBOX_BY_COLUMN_INDEX, Keys.ENTER, String.valueOf(columnIndex));
+	}
+
+	public boolean isNameAndEmailSearchedDisplayed(String name, String email) {
+		waitForElementVisible(driver, AdminLoginPageUI.NAME_AND_EMAIL_SEARCHED, name, email);
+		return isElementDisplayed(driver, AdminLoginPageUI.NAME_AND_EMAIL_SEARCHED, name, email);
 	}
 	
 }

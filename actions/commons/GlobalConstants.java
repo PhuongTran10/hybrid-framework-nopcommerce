@@ -11,7 +11,7 @@ public class GlobalConstants {
 	public static final String ADMIN_DEV_URL_LIVE_GURU  = "http://live.techpanda.org/index.php/backendlogin/customer/";
 	public static final String PROJECT_PATH = System.getProperty("user.dir");
 	public static final String OS_NAME = System.getProperty("os.name");
-	public static final String UPLOAD_FILE = PROJECT_PATH + File.separator + "uploadFiles";
+	public static final String UPLOAD_FILE = PROJECT_PATH + File.separator + "uploadFiles" + File.separator;
 	public static final String DOWNLOAD_FILE = PROJECT_PATH + File.separator + "downloadFiles";
 	public static final String BROWSER_LOGS = PROJECT_PATH + File.separator + "browserLogs";
 	public static final String DRAG_AND_DROP = PROJECT_PATH + File.separator + "dragAndDrop";

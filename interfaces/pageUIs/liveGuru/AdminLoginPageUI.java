@@ -7,4 +7,5 @@ public class AdminLoginPageUI {
 	public static final String CLOSE_BUTTON = "xpath=//a[@title='close']/span";
 	public static final String COLUMN_INDEX_BY_NAME = "xpath=//tr[@class='headings']//span[text()='%s']/ancestor::th/preceding-sibling::th";
 	public static final String HEADER_TEXTBOX_BY_COLUMN_INDEX = "xpath=//tr[@class='filter']/th[%s]//input";
+	public static final String NAME_AND_EMAIL_SEARCHED = "xpath=//td[contains(text(),'%s')]/following-sibling::td[contains(text(),'%s')]";
 }

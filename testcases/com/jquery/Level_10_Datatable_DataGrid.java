@@ -1,7 +1,4 @@
-package com.jquery.datatable;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.jquery;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -11,8 +8,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.jQuery.HomePageObject;
-import pageObjects.jQuery.PageGeneratorManager;
+import pageObjects.jQuery.dataTable.HomePageObject;
+import pageObjects.jQuery.dataTable.PageGeneratorManager;
 
 
 public class Level_10_Datatable_DataGrid extends BaseTest{
@@ -83,7 +80,7 @@ public class Level_10_Datatable_DataGrid extends BaseTest{
 	
 	@AfterClass
 	public void afterClass() {
-		//driver.quit();
+		driver.quit();
 	}
 	private WebDriver driver;
 	private HomePageObject homePage;
