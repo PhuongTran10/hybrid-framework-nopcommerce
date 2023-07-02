@@ -48,7 +48,7 @@ public class BaseTest {
 		
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get(GlobalConstants.USER_DEV_URL_LIVE_GURU);
+		driver.get(GlobalConstants.USER_DEV_URL);
 		return driver;
 	}
 	
