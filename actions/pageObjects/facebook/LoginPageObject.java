@@ -29,5 +29,9 @@ public class LoginPageObject extends BasePage{
 		waitForElementVisible(driver, LoginPageUI.CLOSE_ICON);
 		clickToElement(driver, LoginPageUI.CLOSE_ICON);
 	}
+	public boolean isConfirmEmailTextboxUndisplayed() {
+		waitForElementUndisplayed(driver, LoginPageUI.EMAIL_CONFIRM_TEXTBOX);
+		return isElementUndisplayed(driver, LoginPageUI.EMAIL_CONFIRM_TEXTBOX);
+	}
 
 }

@@ -230,11 +230,25 @@ public class BasePage {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
 	}
 	
-//	public boolean isElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
-//		System.out.println("Start time = " + new Date().toString());
-//		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
-//		
-//	}
+	public boolean isElementUndisplayed(WebDriver driver, String locatorType) {
+		System.out.println("Start time = " + new Date().toString());
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		List<WebElement> elements = getListWebElement(driver, locatorType);
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		
+		if(elements.size() == 0) {
+			System.out.println("Element not in DOM");
+			System.out.println("End time = " + new Date().toString());
+			return true;
+		} else if(elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			System.out.println("Element in DOM butnot visible/ displayed");
+			System.out.println("End time = " + new Date().toString());
+			return true;
+		} else {
+			System.out.println("Element in DOM and displayed");
+			return false;
+		}
+	}
 	
 	public void overrideGlobalTimeout(WebDriver driver, long TimeOut) {
 		driver.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
@@ -338,6 +352,15 @@ public class BasePage {
 		
 	public void waitForElementInVisible(WebDriver driver, String locatorType, String... dynamicValues) {
 		new WebDriverWait(driver, longTimeout).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
+	}
+	
+	/*
+	 * Wait for element undisplayed in DOM or not in DOM and override implicit timeout
+	 */
+	public void waitForElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		new WebDriverWait(driver, longTimeout).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
 	}
 	
 	public void waitForAllElementsInVisible(WebDriver driver, String locatorType, String... dynamicValues) {
