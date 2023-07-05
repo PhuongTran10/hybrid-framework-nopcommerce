@@ -1,7 +1,9 @@
 package commons;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -226,6 +228,16 @@ public class BasePage {
 	
 	public boolean isElementDisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
+	}
+	
+//	public boolean isElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
+//		System.out.println("Start time = " + new Date().toString());
+//		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+//		
+//	}
+	
+	public void overrideGlobalTimeout(WebDriver driver, long TimeOut) {
+		driver.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
 	}
 	
 	public boolean isElementEnabled(WebDriver driver, String locatorType, String... dynamicValues) {

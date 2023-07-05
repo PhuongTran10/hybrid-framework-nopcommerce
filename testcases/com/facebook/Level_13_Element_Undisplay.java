@@ -35,11 +35,16 @@ public class Level_13_Element_Undisplay extends BaseTest{
 	public void User_02_Verify_Element_Undisplayed_In_DOM() {
 		loginPage.enterToEmailTextbox(email);
 		verifyTrue(loginPage.isConfirmEmailTextboxDisplayed());
+		loginPage.sleepInSecond(2);
+		
+		loginPage.enterToEmailTextbox("");
+		loginPage.sleepInSecond(2);
+		verifyFalse(loginPage.isConfirmEmailTextboxDisplayed());
 	}
 	
 	@Test
 	public void User_02_Verify_Element_Undisplayed_Not_In_DOM() {
-		
+		loginPage.clickToCloseIconAtRegisterForm();
 	}
 	
 	@AfterClass
