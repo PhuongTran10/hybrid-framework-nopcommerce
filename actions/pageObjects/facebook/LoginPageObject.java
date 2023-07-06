@@ -3,6 +3,7 @@ package pageObjects.facebook;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.GlobalConstants;
 import pageUIs.facebook.LoginPageUI;
 
 public class LoginPageObject extends BasePage{

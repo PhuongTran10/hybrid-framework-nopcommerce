@@ -36,7 +36,7 @@ public class Level_13_Element_Undisplay extends BaseTest{
 		loginPage.enterToEmailTextbox(email);
 		verifyTrue(loginPage.isConfirmEmailTextboxDisplayed());
 		loginPage.sleepInSecond(2);
-		
+	
 		loginPage.enterToEmailTextbox("");
 		loginPage.sleepInSecond(2);
 		verifyFalse(loginPage.isConfirmEmailTextboxDisplayed());

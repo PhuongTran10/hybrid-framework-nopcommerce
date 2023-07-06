@@ -232,9 +232,9 @@ public class BasePage {
 	
 	public boolean isElementUndisplayed(WebDriver driver, String locatorType) {
 		System.out.println("Start time = " + new Date().toString());
-		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		overrideImplicitTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
 		List<WebElement> elements = getListWebElement(driver, locatorType);
-		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		overrideImplicitTimeout(driver, GlobalConstants.LONG_TIMEOUT);
 		
 		if(elements.size() == 0) {
 			System.out.println("Element not in DOM");
@@ -250,7 +250,7 @@ public class BasePage {
 		}
 	}
 	
-	public void overrideGlobalTimeout(WebDriver driver, long TimeOut) {
+	public void overrideImplicitTimeout(WebDriver driver, long TimeOut) {
 		driver.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
 	}
 	
@@ -358,9 +358,9 @@ public class BasePage {
 	 * Wait for element undisplayed in DOM or not in DOM and override implicit timeout
 	 */
 	public void waitForElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
-		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		overrideImplicitTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
 		new WebDriverWait(driver, longTimeout).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
-		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		overrideImplicitTimeout(driver, GlobalConstants.LONG_TIMEOUT);
 	}
 	
 	public void waitForAllElementsInVisible(WebDriver driver, String locatorType, String... dynamicValues) {
