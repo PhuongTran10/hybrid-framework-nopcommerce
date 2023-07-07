@@ -1,21 +1,53 @@
 package com.nopcommerce.data;
 
+import java.io.File;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import commons.GlobalConstants;
+
 public class UserDataMapper {
-	private String firstName, lastName, existingEmail, validPassword;
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	
+	@JsonProperty("firstName")
+	private String firstName;
+	
+	@JsonProperty("lastName")
+	private String lastName;
+	
+	@JsonProperty("email")
+	private String email;
+	
+	@JsonProperty("validPassword")
+	private String validPassword;
+	
+	public static UserDataMapper getUserData(String fileName) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			return mapper.readValue(new File(GlobalConstants.PROJECT_PATH + "/resources/UserData.json"), UserDataMapper.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setExistingEmail(String existingEmail) {
-		this.existingEmail = existingEmail;
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public String getEmail() {
+		return lastName;
 	}
 
-	public void setValidPassword(String validPassword) {
-		this.validPassword = validPassword;
+	public String getValidPassword() {
+		return validPassword;
 	}
+
+	
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce">
+	<listeners>
+		<listener class-name="commons.MethodListener"></listener>
+	</listeners>
+	
+<parameter name="environment" value="dev"/>
+
+ <test name="Run on Firefox">
+	<parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="com.nopcommerce.user.Level_12_Part_II_Assert_Verify_Apply_Json_File"/>
+    </classes>
+  </test> 
+  
+</suite> 

@@ -2,6 +2,8 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
 
+import com.nopcommerce.data.UserDataMapper;
+
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.nopCommerce.user.UserAddressPageObject;
@@ -18,29 +20,29 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_12_Assert_Verify extends BaseTest{
+public class Level_12_Part_II_Assert_Verify_Apply_Json_File extends BaseTest{
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-				
-		firstName = "Automation";
-		lastName = "Testing";
-		existingEmail = "abc"+ generateFakeNumber() + "@gmail.com";
-		validPassword = "123456";
+		userData = UserDataMapper.getUserData(browserName);
+		
+
+		existingEmail = userData.getEmail()+ generateFakeNumber() + "@gmail.com";
+
 	}
 	
 	@Test
 	public void User_01_Register_Login() {
 
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.inputToFirstnameTextbox(firstName);
-		registerPage.inputToLastnameTextbox(lastName);
+		registerPage.inputToFirstnameTextbox(userData.getFirstName());
+		registerPage.inputToLastnameTextbox(userData.getLastName());
 		registerPage.inputToEmailTextbox(existingEmail);
-		registerPage.inputToPasswordTextbox(validPassword);
-		registerPage.inputToConfirmPasswordTextbox(validPassword);
+		registerPage.inputToPasswordTextbox(userData.getValidPassword());
+		registerPage.inputToConfirmPasswordTextbox(userData.getValidPassword());
 		homePage = registerPage.clickToRegisterButton();
 		verifyEquals(registerPage.getRegisterSuccessMessage(),"Your registration completed");
 		
@@ -50,7 +52,7 @@ public class Level_12_Assert_Verify extends BaseTest{
 	
 		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
-		loginPage.inputToPasswordTextbox(validPassword);
+		loginPage.inputToPasswordTextbox(userData.getValidPassword());
 				
 		homePage = loginPage.clickToLoginButton();
 		verifyTrue(homePage.isMyAccountLinkDisplayed());
@@ -71,4 +73,5 @@ public class Level_12_Assert_Verify extends BaseTest{
 	private UserRegisterPageObject registerPage;
 	private UserLoginPageObject loginPage;
 	private UserCustomerInforPageObject customerInforPage;
+	private UserDataMapper userData;
 }

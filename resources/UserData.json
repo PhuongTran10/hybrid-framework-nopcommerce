@@ -1,5 +1,6 @@
 {
 	"firstName":  "Automation",
 	"lastName": "Testing",
+	"email" : "abc",
 	"validPassword": "123456"
 }
