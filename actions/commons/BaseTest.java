@@ -88,6 +88,10 @@ public class BaseTest {
 		return driver;
 	}
 	
+	public WebDriver getDriverInstance() {
+		return this.driver;
+	}
+	
 	protected String getEnvironmentUrl(String environmentName) {
 		String url = null;
 		switch (environmentName) {

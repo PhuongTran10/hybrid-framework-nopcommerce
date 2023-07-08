@@ -1,6 +1,24 @@
 {
-	"firstName":  "Automation",
-	"lastName": "Testing",
-	"email" : "abc",
-	"validPassword": "123456"
+	"profile": [
+		{
+			"firstName": "Automation",
+			"lastName": "Testing",
+			"email": "abc",
+			"validPassword": "123456"
+		},
+		{
+			"firstName": "John",
+			"lastName": "Michel Phell",
+			"email": "abc",
+			"validPassword": "123456"
+		},
+		{
+			"firstName": "Nguyễn Hương ",
+			"lastName": "Lịnh",
+			"email": "abc",
+			"validPassword": "123456"
+		}
+	],
+	
+	"email": "abc"
 }
