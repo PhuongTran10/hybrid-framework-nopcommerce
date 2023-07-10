@@ -81,7 +81,6 @@ public class Level_12_Part_II_Assert_Verify_Apply_Json_File extends BaseTest{
 		 for (int i = 0; i < userData.getProfiles().size(); i++) {
              data[i] = userData.getProfiles().get(i);
          }
-
          return data;
 	    }
 	
