@@ -1,0 +1,73 @@
+[2023-08-17 17:06:02,236] Register - Step 01: Navigate to 'Register' page
+[2023-08-17 17:06:03,554] Register - Step 02: Enter to Firstname textbox with value is 'Automation'
+[2023-08-17 17:06:03,685] Register - Step 03: Enter to Lastname textbox with value is 'Testing'
+[2023-08-17 17:06:03,803] Register - Step 04: Enter to Email textbox with value is 'abc3806@gmail.com'
+[2023-08-17 17:06:03,931] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-08-17 17:06:04,051] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-08-17 17:06:04,166] Register - Step 07: Click to 'Register' button
+[2023-08-17 17:06:05,680] Register - Step 08: Verify success register message is displayed
+[2023-08-17 17:06:05,765] Register - Step 10: Click to Logout link
+[2023-08-17 17:06:05,884] Login - Step 01: Navigate to Login Page
+[2023-08-17 17:06:06,419] Login - Step 02: Enter to Email textbox with value is 'Automation'
+[2023-08-17 17:06:06,620] Login - Step 03: Enter to Password textbox with value is '123456'
+[2023-08-17 17:06:06,734] Login - Step 04: Click to 'Login' button
+[2023-08-17 17:06:07,535] Login - Step 05: Verify 'My account' link is displayed
+[2023-08-17 17:06:07,668] Login - Step 06: Navigate to 'Customer infor' page
+[2023-08-17 17:06:08,578] Login - Step 07: Verify 'Customer infor' page is displayed
+[2023-08-17 17:10:21,588] Register - Step 01: Navigate to 'Register' page
+[2023-08-17 17:10:22,756] Register - Step 02: Enter to Firstname textbox with value is 'Automation'
+[2023-08-17 17:10:22,859] Register - Step 03: Enter to Lastname textbox with value is 'Testing'
+[2023-08-17 17:10:22,955] Register - Step 04: Enter to Email textbox with value is 'abc5448@gmail.com'
+[2023-08-17 17:10:23,047] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-08-17 17:10:23,152] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-08-17 17:10:23,232] Register - Step 07: Click to 'Register' button
+[2023-08-17 17:10:24,451] Register - Step 08: Verify success register message is displayed
+[2023-08-17 17:10:24,519]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:10:24,520] Register - Step 10: Click to Logout link
+[2023-08-17 17:10:24,589] Login - Step 01: Navigate to Login Page
+[2023-08-17 17:10:25,035] Login - Step 02: Enter to Email textbox with value is 'Automation'
+[2023-08-17 17:10:25,136] Login - Step 03: Enter to Password textbox with value is '123456'
+[2023-08-17 17:10:25,234] Login - Step 04: Click to 'Login' button
+[2023-08-17 17:10:26,149] Login - Step 05: Verify 'My account' link is displayed
+[2023-08-17 17:10:26,250]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:10:26,251] Login - Step 06: Navigate to 'Customer infor' page
+[2023-08-17 17:10:26,629] Login - Step 07: Verify 'Customer infor' page is displayed
+[2023-08-17 17:10:26,704]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:18:14,477] Register - Step 01: Navigate to 'Register' page
+[2023-08-17 17:18:15,636] Register - Step 02: Enter to Firstname textbox with value is 'Automation'
+[2023-08-17 17:18:15,769] Register - Step 03: Enter to Lastname textbox with value is 'Testing'
+[2023-08-17 17:18:15,880] Register - Step 04: Enter to Email textbox with value is 'abc9808@gmail.com'
+[2023-08-17 17:18:15,997] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-08-17 17:18:16,100] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-08-17 17:18:16,202] Register - Step 07: Click to 'Register' button
+[2023-08-17 17:18:17,000] Register - Step 08: Verify success register message is displayed
+[2023-08-17 17:18:17,113]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:18:17,113] Register - Step 10: Click to Logout link
+[2023-08-17 17:18:17,184] Login - Step 01: Navigate to Login Page
+[2023-08-17 17:18:17,618] Login - Step 02: Enter to Email textbox with value is 'Automation'
+[2023-08-17 17:18:17,737] Login - Step 03: Enter to Password textbox with value is '123456'
+[2023-08-17 17:18:17,849] Login - Step 04: Click to 'Login' button
+[2023-08-17 17:18:18,555] Login - Step 05: Verify 'My account' link is displayed
+[2023-08-17 17:18:18,670]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:18:18,670] Login - Step 06: Navigate to 'Customer infor' page
+[2023-08-17 17:18:19,054] Login - Step 07: Verify 'Customer infor' page is displayed
+[2023-08-17 17:18:19,159]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:31:02,019] Register - Step 01: Navigate to 'Register' page
+[2023-08-17 17:31:03,156] Register - Step 02: Enter to Firstname textbox with value is 'Automation'
+[2023-08-17 17:31:03,327] Register - Step 03: Enter to Lastname textbox with value is 'Testing'
+[2023-08-17 17:31:03,437] Register - Step 04: Enter to Email textbox with value is 'abc5376@gmail.com'
+[2023-08-17 17:31:03,544] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-08-17 17:31:03,638] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-08-17 17:31:03,728] Register - Step 07: Click to 'Register' button
+[2023-08-17 17:31:04,982] Register - Step 08: Verify success register message is displayed
+[2023-08-17 17:31:05,075]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:31:05,075] Register - Step 10: Click to Logout link
+[2023-08-17 17:31:05,154] Login - Step 01: Navigate to Login Page
+[2023-08-17 17:31:05,598] Login - Step 02: Enter to Email textbox with value is 'Automation'
+[2023-08-17 17:31:05,720] Login - Step 03: Enter to Password textbox with value is '123456'
+[2023-08-17 17:31:05,817] Login - Step 04: Click to 'Login' button
+[2023-08-17 17:31:06,535] Login - Step 05: Verify 'My account' link is displayed
+[2023-08-17 17:31:06,654]  -------------------------- PASSED -------------------------- 
+[2023-08-17 17:31:06,654] Login - Step 06: Navigate to 'Customer infor' page
+[2023-08-17 17:31:07,137] Login - Step 07: Verify 'Customer infor' page is displayed
+[2023-08-17 17:31:07,241]  -------------------------- PASSED -------------------------- 
