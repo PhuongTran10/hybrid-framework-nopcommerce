@@ -96,7 +96,7 @@ public class BaseTest {
 	}
 	
 	public WebDriver getDriverInstance() {
-		return this.driver;
+		return driver;
 	}
 	
 	protected String getEnvironmentUrl(String environmentName) {

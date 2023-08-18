@@ -56,7 +56,7 @@ public class Level_14_Log_ReportNG extends BaseTest{
 		homePage = registerPage.clickToRegisterButton();
 		
 		log.info("Register - Step 08: Verify success register message is displayed");
-		verifyEquals(registerPage.getRegisterSuccessMessage(),"Your registration completed");
+		Assert.assertEquals(registerPage.getRegisterSuccessMessage(),"Your registration completed..");
 		
 		log.info("Register - Step 10: Click to Logout link");
 		if(!registerPage.isLoginLinkDisplayed()) {
@@ -79,13 +79,13 @@ public class Level_14_Log_ReportNG extends BaseTest{
 		homePage = loginPage.clickToLoginButton();
 		
 		log.info("Login - Step 05: Verify 'My account' link is displayed");
-		verifyTrue(homePage.isMyAccountLinkDisplayed());
+		Assert.assertFalse(homePage.isMyAccountLinkDisplayed());
 		
 		log.info("Login - Step 06: Navigate to 'Customer infor' page");
 		customerInforPage = homePage.clickToMyAccountLink();
 		
 		log.info("Login - Step 07: Verify 'Customer infor' page is displayed");
-		verifyTrue(customerInforPage.isCustomerInforHeaderDisplayed());
+		Assert.assertFalse(customerInforPage.isCustomerInforHeaderDisplayed());
 	}
 	
 	@AfterClass
