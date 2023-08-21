@@ -41,16 +41,17 @@ public class ExtentTestListener extends BaseTest implements ITestListener {
 		Object testClass = iTestResult.getInstance();
 		WebDriver driver = ((BaseTest) testClass).getDriverInstance();
 		String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-		getTest().log(Status.FAIL, "Test Failed", getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
+		getTest().log(Status.FAIL, "Test Failed \n", getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
+		getTest().fail(iTestResult.getThrowable());		
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult iTestResult) {
-		getTest().log(Status.SKIP, "Test Skipped");
+		getTest().log(Status.SKIP, "Test Skipped \n" + iTestResult.getThrowable());
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-		getTest().log(Status.FAIL, "Test Failed with percentage" + getTestMethodName(iTestResult));
+		getTest().log(Status.FAIL, "Test Failed with percentage \n" + getTestMethodName(iTestResult));
 	}
 }
