@@ -49,7 +49,7 @@ public class Level_17_Share_Data_C extends BaseTest{
 		
 		loginPage.refreshCurrentPage(driver);
 
-		homePage = loginPage.clickToLoginButton();
+		homePage = loginPage.clickToNotificationCloseButton();
 
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 

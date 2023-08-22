@@ -48,9 +48,11 @@ public class UserLoginPageObject extends BasePage{
 		return clickToLoginButton();
 	}
 	
-	public void clickToNotificationCloseButton() {
+	public UserHomePageObject clickToNotificationCloseButton() {
 		waitForElementVisible(driver, UserLoginPageUI.BAR_NOTIFICATION);
 		clickToElement(driver, UserLoginPageUI.BAR_NOTIFICATION);
+		sleepInSecond(1);
+		return PageGeneratorManager.getUserHomePage(driver);
 	}
 	
 }
