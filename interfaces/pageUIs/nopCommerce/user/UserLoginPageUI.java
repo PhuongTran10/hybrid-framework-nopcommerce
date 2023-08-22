@@ -6,5 +6,5 @@ public class UserLoginPageUI {
 	public static final String LOGIN_BUTTON = "xpath=//button[contains(@class,'login-button')]";
 	public static final String EMAIL_ERROR_MESSAGE = "xpath=//span[@id='Email-error']";
 	public static final String UNSUCCESSFUL_ERROR_MESSAGE = "xpath=//div[contains(@class,'message-error')]";
-
+	public static final String BAR_NOTIFICATION = "css=span.close";
 }

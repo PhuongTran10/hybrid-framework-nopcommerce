@@ -48,4 +48,9 @@ public class UserLoginPageObject extends BasePage{
 		return clickToLoginButton();
 	}
 	
+	public void clickToNotificationCloseButton() {
+		waitForElementVisible(driver, UserLoginPageUI.BAR_NOTIFICATION);
+		clickToElement(driver, UserLoginPageUI.BAR_NOTIFICATION);
+	}
+	
 }

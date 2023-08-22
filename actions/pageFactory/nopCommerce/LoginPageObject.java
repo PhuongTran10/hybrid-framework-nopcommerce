@@ -31,7 +31,7 @@ public class LoginPageObject extends BasePageFactory{
 		waitForElementVisible(driver, loginButton);
 		clickToElement(driver, loginButton);
 	}
-
+	
 	public String getErrorMessageAtEmailTextbox() {
 		waitForElementVisible(driver, emailErrorMessage);
 		return getElementText(driver, emailErrorMessage);

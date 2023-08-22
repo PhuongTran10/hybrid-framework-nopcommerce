@@ -122,7 +122,7 @@ public class Level_05_Page_Factory extends BaseTest{
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}
 	
-	public int generateFakeNumber() {
+	public static int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}

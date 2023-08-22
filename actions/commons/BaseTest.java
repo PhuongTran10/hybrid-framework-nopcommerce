@@ -123,7 +123,7 @@ public class BaseTest {
 		return url;
 	}
 	
-	protected int generateFakeNumber() {
+	public static int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}

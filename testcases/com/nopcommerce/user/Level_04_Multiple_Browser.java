@@ -148,7 +148,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		Assert.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(),"The password and confirmation password do not match.");
 	}
 	
-	public int generateFakeNumber() {
+	public static int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
