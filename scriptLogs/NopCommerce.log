@@ -221,3 +221,73 @@
 [2023-08-18 15:50:23,202] Login - Step 03: Enter to Password textbox with value is '123456'
 [2023-08-18 15:50:23,291] Login - Step 04: Click to 'Login' button
 [2023-08-18 15:50:24,457] Login - Step 05: Verify 'My account' link is displayed
+[2023-08-23 10:50:49,301] OS name = windows 10
+[2023-08-23 10:50:49,302] Driver instance name = firefoxdriver: firefox on windows (3eee0df1-e93a-4856-904c-45a36a296024)
+[2023-08-23 10:50:49,319] Tried to run command without establishing a connection
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-JPVH95S', ip: '192.168.100.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 116.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230805021307, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 12652, moz:profile: C:\Users\BINHGO~1\AppData\L..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 3eee0df1-e93a-4856-904c-45a36a296024
+[2023-08-23 10:53:11,688] OS name = windows 10
+[2023-08-23 10:53:11,689] Driver instance name = firefoxdriver: firefox on windows (a6d9f5e6-0aa2-4a5f-987d-493ec325e89e)
+[2023-08-23 11:00:12,514] OS name = windows 10
+[2023-08-23 11:00:12,515] Driver instance name = firefoxdriver: firefox on windows (51ff3288-a655-4766-a360-d94a5df5daf3)
+[2023-08-23 11:03:52,166] OS name = windows 10
+[2023-08-23 11:03:52,167] Driver instance name = firefoxdriver: firefox on windows (671aecbc-1387-4d69-82ae-0cc52cd7009f)
+[2023-08-23 11:05:08,073] OS name = windows 10
+[2023-08-23 11:05:08,074] Driver instance name = firefoxdriver: firefox on windows (6aa5c391-de8a-412f-b4bc-defb6f0894f2)
+[2023-08-23 14:06:08,354] OS name = windows 10
+[2023-08-23 14:06:08,354] Driver instance name = firefoxdriver: firefox on windows (87472fc2-da37-4088-a0b3-02a0413af9e2)
+[2023-08-23 14:06:08,377] Failed to decode response from marionette
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-JPVH95S', ip: '192.168.100.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 116.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230805021307, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 3096, moz:profile: C:\Users\BINHGO~1\AppData\L..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 87472fc2-da37-4088-a0b3-02a0413af9e2
+[2023-08-23 14:06:57,873] OS name = windows 10
+[2023-08-23 14:06:57,874] Driver instance name = firefoxdriver: firefox on windows (9461bd0f-6fb0-4259-83c2-963be77cd5cb)
+[2023-08-23 14:06:57,899] Failed to decode response from marionette
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-JPVH95S', ip: '192.168.100.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 116.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230805021307, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 23148, moz:profile: C:\Users\BINHGO~1\AppData\L..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 9461bd0f-6fb0-4259-83c2-963be77cd5cb
+[2023-08-23 14:08:58,503] OS name = windows 10
+[2023-08-23 14:08:58,504] Driver instance name = firefoxdriver: firefox on windows (13ec6af5-a646-4c64-ac7c-49b6075c334f)
+[2023-08-23 14:08:58,617] Failed to decode response from marionette
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-JPVH95S', ip: '192.168.100.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 116.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230805021307, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 5152, moz:profile: C:\Users\BINHGO~1\AppData\L..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 13ec6af5-a646-4c64-ac7c-49b6075c334f
+[2023-08-23 14:10:52,109] OS name = windows 10
+[2023-08-23 14:10:52,110] Driver instance name = firefoxdriver: firefox on windows (46b148a8-b646-4ca6-8eb3-b21ca3c53f27)
+[2023-08-23 14:10:52,244] Failed to decode response from marionette
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-JPVH95S', ip: '192.168.100.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 116.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230805021307, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 1016, moz:profile: C:\Users\BINHGO~1\AppData\L..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 46b148a8-b646-4ca6-8eb3-b21ca3c53f27
+[2023-08-23 14:11:54,864] OS name = windows 10
+[2023-08-23 14:11:54,867] Driver instance name = firefoxdriver: firefox on windows (9889934e-8a7f-4af3-a65b-2eabf8330b59)
+[2023-08-23 14:12:30,891] OS name = windows 10
+[2023-08-23 14:12:30,892] Driver instance name = firefoxdriver: firefox on windows (70c8fc9f-ba4c-40d1-9f99-21ca50ae92cb)
+[2023-08-23 14:36:10,756] OS name = windows 10
+[2023-08-23 14:36:10,757] Driver instance name = firefoxdriver: firefox on windows (2e698e8c-150e-4a54-a835-08c2bd301bd9)
+[2023-08-23 14:36:10,804] Failed to decode response from marionette
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-JPVH95S', ip: '192.168.100.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 116.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230805021307, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 13608, moz:profile: C:\Users\BINHGO~1\AppData\L..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 2e698e8c-150e-4a54-a835-08c2bd301bd9
+[2023-08-23 14:36:50,065] OS name = windows 10
+[2023-08-23 14:36:50,067] Driver instance name = firefoxdriver: firefox on windows (71d54ddb-173d-43e9-9da8-5871e1dfd378)
+[2023-08-23 14:52:34,986] OS name = windows 10
+[2023-08-23 14:52:34,987] Driver instance name = firefoxdriver: firefox on windows (1329d8f6-c21f-4032-aff9-d91db3aa423c)
+[2023-08-23 15:05:06,645] OS name = windows 10
+[2023-08-23 15:05:06,646] Driver instance name = firefoxdriver: firefox on windows (7fefa078-368c-465a-8972-ecfed92bfd17)
+[2023-08-23 15:05:48,296] OS name = windows 10
+[2023-08-23 15:05:48,298] Driver instance name = firefoxdriver: firefox on windows (00fd1121-5618-4c55-a6a5-27106ce079a1)
+[2023-08-23 15:31:26,223] OS name = windows 10
+[2023-08-23 15:31:26,223] Driver instance name = firefoxdriver: firefox on windows (a55ef5ac-e7ab-4dd4-99a3-39f7c8aed3c3)
