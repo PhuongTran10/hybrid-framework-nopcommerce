@@ -1,32 +1,12 @@
 package com.nopcommerce.user;
 
-import org.testng.annotations.Test;
-
-import com.aventstack.extentreports.Status;
-import com.nopcommerce.common.Common_01_Register_End_User;
-
-import commons.BaseTest;
-import commons.PageGeneratorManager;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import pageObjects.nopCommerce.user.UserAddressPageObject;
-import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
-import pageObjects.nopCommerce.user.UserHomePageObject;
-import pageObjects.nopCommerce.user.UserLoginPageObject;
-import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
-import pageObjects.nopCommerce.user.UserRegisterPageObject;
-import pageObjects.nopCommerce.user.UserRewardPointPageObject;
-import reportConfig.ExtentTestManager;
-
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
-import java.lang.reflect.Method;
-
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
+import commons.BaseTest;
 
 public class Level_17_Share_Data_A extends BaseTest{
 	
@@ -34,50 +14,35 @@ public class Level_17_Share_Data_A extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
-		loginPage = homePage.clickToLoginLink();
-		existingEmail = Common_01_Register_End_User.existingEmail;
-		validPassword = Common_01_Register_End_User.validPassword;
-		
-		loginPage.inputToEmailTextbox(existingEmail);
-
-		loginPage.inputToPasswordTextbox(validPassword);
-
-		homePage = loginPage.clickToLoginButton();
-
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-
-		customerInforPage = homePage.clickToMyAccountLink();
-
-		Assert.assertTrue(customerInforPage.isCustomerInforHeaderDisplayed());
+	
 	}
 	
 	@Test
-	public void Search_01_Empty_Data() {
+	public void Post_01_Create_New_Post() {
 
 		
 	}
 	
 	@Test
-	public void Search_02_Relative_Product_Name() {
+	public void Post_02_Search_Post() {
 		
 		
 	}
 	
 	@Test
-	public void Search_03_Absolute_Product_Name() {
+	public void Post_03_View_Post() {
 		
 		
 	}
 	
 	@Test
-	public void Search_04_Parent_Category() {
+	public void Post_04_Edit_Post() {
 		
 		
 	}
 	
 	@Test
-	public void Search_05_Correct_Manufactorer() {
+	public void Post_05_Delete_Post() {
 		
 		
 	}
@@ -88,11 +53,5 @@ public class Level_17_Share_Data_A extends BaseTest{
 	}
 		
 	private WebDriver driver;
-	private String firstName, lastName;
-	public static String existingEmail;
-	public static String validPassword;
-	private UserHomePageObject homePage;
-	private UserRegisterPageObject registerPage;
-	private UserLoginPageObject loginPage;
-	private UserCustomerInforPageObject customerInforPage;
+
 }
