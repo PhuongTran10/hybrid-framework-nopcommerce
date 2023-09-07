@@ -10,10 +10,12 @@
 	</listeners>
 	
 <parameter name="urlAdmin" value="http://automationtest.com:600/wp-admin"/>
+<parameter name="urlAdminMac" value="http://automationtest.com:86/wp-admin"/>
 <parameter name="urlUser" value="http://automationtest.com:600"/>
+<parameter name="urlUserMac" value="http://automationtest.com:86"/>
 
  <test name="Run on Chrome">
-	<parameter name="browser" value="firefox"/>
+	<parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.wordpress.admin.Post_01_Create_Read_Update_Delete_Search"/>
     </classes>
