@@ -9,6 +9,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Topic_02_Array_List_02_Iterating_Sort {
 	
@@ -44,6 +45,13 @@ public class Topic_02_Array_List_02_Iterating_Sort {
 		Iterator<String> itr = list1.iterator();
 		while(itr.hasNext()) {
 			System.out.println("iterator " + itr.next());
+		}
+		
+		//ListIterator
+		System.out.println("ListIterator");
+		ListIterator<String> listItr = list1.listIterator();
+		while(listItr.hasNext()) {
+			System.out.println(listItr.next());
 		}
 		
 		//Lambda Expression (>= Java 8)
