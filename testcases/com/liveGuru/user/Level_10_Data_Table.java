@@ -42,7 +42,7 @@ public class Level_10_Data_Table extends BaseTest{
 		myDashboardPage = registerPage.clickToRegisterButton();
 		
 		Assert.assertEquals(myDashboardPage.getRegisterSuccessMessage(), "Thank you for registering with Main Website Store.");
-		myDashboardPage.openURL(driver, GlobalConstants.ADMIN_DEV_URL_LIVE_GURU);
+		myDashboardPage.openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL_LIVE_GURU);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		adminLoginPage.loginAsAdmin("user01","guru99com");
 		adminLoginPage.closeIncomingMessage();

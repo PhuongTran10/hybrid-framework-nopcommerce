@@ -1,106 +1,89 @@
 package com.wordpress.admin;
 
-import org.testng.annotations.Test;
-
-import commons.BaseTest;
-import commons.PageGeneratorManager;
-import pageObjects.nopCommerce.user.UserAddressPageObject;
-import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
-import pageObjects.nopCommerce.user.UserHomePageObject;
-import pageObjects.nopCommerce.user.UserLoginPageObject;
-import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
-import pageObjects.nopCommerce.user.UserRegisterPageObject;
-import pageObjects.nopCommerce.user.UserRewardPointPageObject;
-
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import commons.BaseTest;
+import pageObjects.wordpress.admin.AdminDashboardPO;
+import pageObjects.wordpress.admin.AdminLoginPO;
+import pageObjects.wordpress.admin.AdminPostAddNewPO;
+import pageObjects.wordpress.admin.AdminPostSearchPO;
+import pageObjects.wordpress.admin.PageGeneratorManager;
 
 public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	
-	@Parameters("browser")
+	String adminUsername = "automationtest";
+	String adminPassword = "automationtest";
+	String searchPostUrl;
+	int randomNumber = generateFakeNumber();
+	String postTitleValue = "Live Coding Title " + randomNumber;
+	String postBodyValue = "Live Coding Body " + randomNumber;
+	
+	@Parameters({"browser", "urlAdmin"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
-				
-		firstName = "Automation";
-		lastName = "Testing";
-		existingEmail = "abc"+ generateFakeNumber() + "@gmail.com";
-		validPassword = "123456";
+	public void beforeClass(String browserName, String adminUrl) {
+		log.info("Pre-Condition - Step 01: Open browser and admin Url");
+		driver = getBrowserDriver(browserName, adminUrl);
+		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
+		
+		log.info("Pre-Condition - Step 02: Enter to Username textbox with value: " + adminUsername);
+		adminLoginPage.inputToTextboxByID(driver, adminUsername, "user_login");
+		
+		log.info("Pre-Condition - Step 03: Enter to Password textbox with value: " + adminPassword);
+		adminLoginPage.inputToTextboxByID(driver, adminPassword, "user_pass");
+		
+		log.info("Pre-Condition - Step 04: Click to 'Log In' button");
+		adminDashboardPage = adminLoginPage.clickToLoginButton();
+		
+		adminDashboardPage = PageGeneratorManager.getAdminDashboardPage(driver);
 	}
 	
 	@Test
-	public void User_01_Register_Login() {
-
-		registerPage = homePage.clickToRegisterLink();
-		registerPage.inputToFirstnameTextbox(firstName);
-		registerPage.inputToLastnameTextbox(lastName);
-		registerPage.inputToEmailTextbox(existingEmail);
-		registerPage.inputToPasswordTextbox(validPassword);
-		registerPage.inputToConfirmPasswordTextbox(validPassword);
-		homePage = registerPage.clickToRegisterButton();
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(),"Your registration completed");
+	public void Post_01_Create_New_Post() {
+		log.info("Create_Post - Step 01: Click to 'Posts' menu link");
+		adminPostSearchPage =  adminDashboardPage.clickToPostMenuLink();
 		
-		if(!registerPage.isLoginLinkDisplayed()) {
-			homePage = registerPage.clickToLogoutLink();
-		}	
-	
-		loginPage = homePage.clickToLoginLink();
-		loginPage.inputToEmailTextbox(existingEmail);
-		loginPage.inputToPasswordTextbox(validPassword);
-				
-		homePage = loginPage.clickToLoginButton();
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+		log.info("Create_Post - Step 02: Get 'Search Post' page Url");
+		searchPostUrl = adminPostSearchPage.getCurrentPageUrl(driver);
 		
-		customerInforPage = homePage.clickToMyAccountLink();
-		Assert.assertTrue(customerInforPage.isCustomerInforHeaderDisplayed());
-
-	}
-	@Test
-	public void User_02_Switch_Page() {
-		 addressPage = customerInforPage.openAddressPage(driver);
-		 Assert.assertEquals(addressPage.getAddressHeaderText(),"My account - Addresses");
-		 
-		 myProductReviewPage = addressPage.openMyProductReviewPage(driver);
-		 addressPage = myProductReviewPage.openAddressPage(driver);
-		 rewardPointPage = addressPage.openRewardPointPage(driver);
-		 customerInforPage = rewardPointPage.openCustomerInforPage(driver);
-	}
-	@Test
-	public void User_03_Dynamic_Page_01() {
-		addressPage = (UserAddressPageObject) customerInforPage.openPagesAtMyAccountsByName(driver, "Addresses");
-		Assert.assertEquals(addressPage.getAddressHeaderText(),"My account - Addresses");
+		log.info("Create_Post - Step 03: Click to 'Add New' button ");
+		adminPostAddNewPage = adminPostSearchPage.clickToAddNewButton();
 		
-		myProductReviewPage = (UserMyProductReviewPageObject) addressPage.openPagesAtMyAccountsByName(driver, "My product reviews");
-		addressPage = (UserAddressPageObject) myProductReviewPage.openPagesAtMyAccountsByName(driver, "Addresses");
-		rewardPointPage = (UserRewardPointPageObject) addressPage.openPagesAtMyAccountsByName(driver, "Reward points");
-		customerInforPage = (UserCustomerInforPageObject) rewardPointPage.openPagesAtMyAccountsByName(driver, "Customer info");
+		log.info("Create_Post - Step 04: Enter to post title");
+		adminPostAddNewPage.enterToAddNewPostTitle(postTitleValue);
+		
+		log.info("Create_Post - Step 05: Enter to body");
+		adminPostAddNewPage.enterToAddNewPostBody(postBodyValue);
+		
+		log.info("Create_Post - Step 06: Click to 'Publish' button");
+		adminPostAddNewPage.clickToPublishButton();
+		
+		log.info("Create_Post - Step 07: Click to 'Publish' button on Panel");
+		adminPostAddNewPage.clickToPublishButtonOnPanel();
+		
+		log.info("Create_Post - Step 08: Verify 'Post published' message is displayed");
+		Assert.assertTrue(adminPostAddNewPage.isPostPublishedMessageDisplayed("Post published."));
 	}
 	
 	@Test
-	public void User_03_Dynamic_Page_02() {
-		customerInforPage.openPagesAtMyAccountsByPageName(driver, "Addresses");
-		addressPage = PageGeneratorManager.getUserAddressPage(driver);
-		Assert.assertEquals(addressPage.getAddressHeaderText(),"My account - Addresses");
+	public void Post_02_Search_Post() {
+		log.info("Search_Post - Step 01: Open 'Search_Post' page");
+		adminPostSearchPage = adminPostSearchPage.openSearchPostPageUrl(searchPostUrl);
 		
-		addressPage.openPagesAtMyAccountsByName(driver, "My product reviews");
-		myProductReviewPage = PageGeneratorManager.getUserMyProductReviewPage(driver);
-		Assert.assertEquals(myProductReviewPage.getHeaderText(driver),"My account - My product reviews");
+	}
+	
+	@Test
+	public void Post_03_View_Post() {
 		
-		myProductReviewPage.openPagesAtMyAccountsByName(driver, "Addresses");
-		addressPage = PageGeneratorManager.getUserAddressPage(driver);
-		Assert.assertEquals(addressPage.getHeaderText(driver),"My account - Addresses");
+	}
+	
+	@Test
+	public void Post_04_Edit_Post() {
 		
-		addressPage.openPagesAtMyAccountsByName(driver, "Reward points");
-		rewardPointPage = PageGeneratorManager.getUserRewardPointPage(driver);
-		Assert.assertEquals(rewardPointPage.getHeaderText(driver),"My account - Reward points");
-		
-		rewardPointPage.openPagesAtMyAccountsByName(driver, "Customer info");
-		customerInforPage = PageGeneratorManager.getUserCustomerInforPage(driver);
-		Assert.assertEquals(customerInforPage.getHeaderText(driver),"My account - Customer info");
 	}
 	
 	@AfterClass
@@ -109,12 +92,9 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	}
 	
 	private WebDriver driver;
-	private String firstName, lastName, existingEmail, validPassword;
-	private UserHomePageObject homePage;
-	private UserRegisterPageObject registerPage;
-	private UserLoginPageObject loginPage;
-	private UserCustomerInforPageObject customerInforPage;
-	private UserAddressPageObject addressPage;
-	private UserMyProductReviewPageObject myProductReviewPage;
-	private UserRewardPointPageObject rewardPointPage;
+	private AdminLoginPO adminLoginPage;
+	private AdminDashboardPO adminDashboardPage;
+	private AdminPostSearchPO adminPostSearchPage;
+	private AdminPostAddNewPO adminPostAddNewPage;
+	
 }

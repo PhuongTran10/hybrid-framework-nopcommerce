@@ -34,7 +34,7 @@ public class BasePage {
 	public static BasePage getBasePageObject() {
 		return new BasePage();
 	}
-    public void openURL(WebDriver driver, String pageUrl) {
+    public void openPageUrl(WebDriver driver, String pageUrl) {
     	driver.get(pageUrl);
 	}
 	
@@ -42,7 +42,7 @@ public class BasePage {
 		return driver.getTitle();
 	}
 	
-	public String getCurrentUrl(WebDriver driver) {
+	public String getCurrentPageUrl(WebDriver driver) {
 		return driver.getCurrentUrl();
 	}
 	
