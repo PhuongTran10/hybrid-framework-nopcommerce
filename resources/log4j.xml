@@ -10,7 +10,7 @@
 		</layout>
 	</appender>
 
-	<appender name="logfile" class="org.apache.log4j.FileAppender">
+<!--	<appender name="logfile" class="org.apache.log4j.FileAppender">
 		<param name="File" value="./scriptLogs/NopCommerce.txt" />
 		<param name="Append" value="false" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -26,7 +26,7 @@
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d] %m%n" />
 		</layout>
-	</appender>
+	</appender>-->
 
 	<appender name="testng" class="commons.TestNGAppender">
 		<param name="Threshold" value="INFO" />
@@ -35,7 +35,7 @@
 		</layout>
 	</appender>
 
-	<category name="com.nopcommerce.user">
+	<category name="com.wordpress.admin">
 		<priority value="all" />
 		<appender-ref ref="console" />
 		<appender-ref ref="logfile" />

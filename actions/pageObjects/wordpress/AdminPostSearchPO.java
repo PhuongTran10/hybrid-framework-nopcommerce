@@ -1,4 +1,4 @@
-package pageObjects.wordpress.admin;
+package pageObjects.wordpress;
 
 import org.openqa.selenium.WebDriver;
 
@@ -23,4 +23,17 @@ public class AdminPostSearchPO extends BasePage{
 		openPageUrl(driver, searchPostUrl);
 		return PageGeneratorManager.getAdminPostSearchPage(driver);
 	}
+
+	public void clickToSearchPostsButton() {
+		waitForElementClickable(driver, AdminPostSearchPageUI.SEARCH_POSTS_BUTTON);
+		clickToElement(driver, AdminPostSearchPageUI.SEARCH_POSTS_BUTTON);
+	}
+
+	public boolean isPostSearchTableDisplayed(String headerID, String cellValue) {
+		int headerIndex = getElementSize(driver, AdminPostSearchPageUI.TABLE_HEADER_INDEX_BY_HEADER_ID, headerID) + 1;
+		waitForElementVisible(driver, AdminPostSearchPageUI.TABLE_ROW_VALUE_BY_HEADER_INDEX, String.valueOf(headerIndex), cellValue);
+		return isElementDisplayed(driver, AdminPostSearchPageUI.TABLE_ROW_VALUE_BY_HEADER_INDEX, String.valueOf(headerIndex), cellValue);
+	}
+
+
 }

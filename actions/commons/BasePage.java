@@ -26,6 +26,7 @@ import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointPageObject;
+import pageObjects.wordpress.UserHomePO;
 import pageUIs.jQuery.uploadFile.BasePageJQueryUI;
 import pageUIs.nopCommerce.admin.AdminBasePageUI;
 import pageUIs.nopCommerce.user.UserBasePageUI;
@@ -168,7 +169,7 @@ public class BasePage {
 		element.clear();
 		element.sendKeys(textValue);
 	}
-	
+		
 	public void selectItemInDefaultDropdown(WebDriver driver, String locatorType, String textItem, String... dynamicValues) {
 		new Select(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues))).selectByVisibleText(textItem);
 	}
@@ -526,6 +527,11 @@ public class BasePage {
 		waitForElementVisible(driver, AdminBasePageUI.LOGOUT_LINK);
 		clickToElement(driver, AdminBasePageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getAdminLoginPage(driver);
+	}
+	
+	public UserHomePO openEndUserSite(WebDriver driver, String endUserUrl) {
+		openPageUrl(driver, endUserUrl);
+		return pageObjects.wordpress.PageGeneratorManager.getUserHomePage(driver);
 	}
 	
 	public long longTimeout = GlobalConstants.LONG_TIMEOUT;

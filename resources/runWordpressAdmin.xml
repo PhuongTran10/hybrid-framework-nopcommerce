@@ -2,22 +2,20 @@
 <suite name="Wordpress - Admin">
 	<listeners>
 		<listener class-name="commons.MethodListener"></listener>
-		<!--<listener class-name="reportConfig.ReportNGListener"></listener>
+		<listener class-name="reportConfig.ReportNGListener"></listener>
 		<listener class-name="reportConfig.ExtentTestListener"></listener>
 		<listener class-name="reportConfig.AllureTestListener"></listener>
 		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>	-->
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
 	</listeners>
-	
-<parameter name="urlAdmin" value="http://automationtest.com:600/wp-admin"/>
-<parameter name="urlAdminMac" value="http://automationtest.com:86/wp-admin"/>
-<parameter name="urlUser" value="http://automationtest.com:600"/>
-<parameter name="urlUserMac" value="http://automationtest.com:86"/>
-
- <test name="Run on Chrome">
-	<parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="com.wordpress.admin.Post_01_Create_Read_Update_Delete_Search"/>
-    </classes>
-  </test> 
-</suite> 
+	<parameter name="urlAdmin" value="http://automationtest.com:600/wp-admin" />
+	<parameter name="urlAdminMac" value="http://automationtest.com:86/wp-admin" />
+	<parameter name="urlUser" value="http://automationtest.com:600" />
+	<parameter name="urlUserMac" value="http://automationtest.com:86" />
+	<test name="Run on Chrome">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.wordpress.admin.Post_01_Create_Read_Update_Delete_Search" />
+		</classes>
+	</test>
+</suite>
