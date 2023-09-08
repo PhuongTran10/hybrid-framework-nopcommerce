@@ -23,7 +23,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	String postTitleValue = "Live Coding Title " + randomNumber;
 	String postBodyValue = "Live Coding Body " + randomNumber;
 	
-	@Parameters({"browser", "urlAdmin"})
+	@Parameters({"browser", "urlAdminMac"})
 	@BeforeClass
 	public void beforeClass(String browserName, String adminUrl) {
 		log.info("Pre-Condition - Step 01: Open browser and admin Url");
