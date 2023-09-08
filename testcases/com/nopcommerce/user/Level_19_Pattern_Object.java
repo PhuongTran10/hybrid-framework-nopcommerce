@@ -46,11 +46,11 @@ public class Level_19_Pattern_Object extends BaseTest{
 		month = "February";
 		year = "2000";
 		gender = "Male";
+		
 	}
 	
 	@Test
-	public void User_01_Register() {
-		
+	public void User_01_Register() {	
 		registerPage = homePage.clickToRegisterLink();
 		
 		registerPage.clickToRadioBoxByLabel(driver, gender);

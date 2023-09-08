@@ -1,7 +1,6 @@
 package com.wordpress.admin;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -27,13 +26,12 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	String authorName = "Automation Test";
 	String adminUrl, endUserUrl;	
 	String currentDate = getCurrentDate();
-	@Parameters({"browser", "urlAdmin", "urlUser"})
+	@Parameters({"browser", "urlAdminMac", "urlUserMac"})
 	@BeforeClass
 	public void beforeClass(String browserName, String adminUrl, String endUserUrl) {
 		log.info("Pre-Condition - Step 01: Open browser and admin site");
 		this.adminUrl = adminUrl;
 		this.endUserUrl = endUserUrl;
-				
 		driver = getBrowserDriver(browserName, adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
@@ -45,7 +43,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		
 		log.info("Pre-Condition - Step 04: Click to 'Log In' button");
 		adminDashboardPage = adminLoginPage.clickToLoginButton();
-		
+	
 		adminDashboardPage = PageGeneratorManager.getAdminDashboardPage(driver);
 	}
 	
@@ -73,7 +71,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		adminPostAddNewPage.clickToPrePublishButton();
 		
 		log.info("Create_Post - Step 08: Verify 'Post published' message is displayed");
-		Assert.assertTrue(adminPostAddNewPage.isPostPublishedMessageDisplayed("Post published."));
+		verifyTrue(adminPostAddNewPage.isPostPublishedMessageDisplayed("Post published."));
 	}
 	
 	@Test
