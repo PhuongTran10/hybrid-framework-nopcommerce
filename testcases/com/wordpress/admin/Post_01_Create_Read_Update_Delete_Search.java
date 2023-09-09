@@ -1,10 +1,16 @@
 package com.wordpress.admin;
 
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Sleeper;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.nopcommerce.common.Common_01_Register_Cookie;
 
 import commons.BaseTest;
 import pageObjects.wordpress.AdminDashboardPO;
@@ -23,10 +29,12 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	int randomNumber = generateFakeNumber();
 	String postTitle = "Live Coding Title " + randomNumber;
 	String postBody = "Live Coding Body " + randomNumber;
+	String editPostTitle = "Edit Title " + randomNumber;
+	String editPostBody = "Edit Body " + randomNumber;
 	String authorName = "Automation Test";
 	String adminUrl, endUserUrl;	
 	String currentDate = getCurrentDate();
-	@Parameters({"browser", "urlAdminMac", "urlUserMac"})
+	@Parameters({"browser", "urlAdmin", "urlUser"})
 	@BeforeClass
 	public void beforeClass(String browserName, String adminUrl, String endUserUrl) {
 		log.info("Pre-Condition - Step 01: Open browser and admin site");
@@ -43,8 +51,8 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		
 		log.info("Pre-Condition - Step 04: Click to 'Log In' button");
 		adminDashboardPage = adminLoginPage.clickToLoginButton();
-	
-		adminDashboardPage = PageGeneratorManager.getAdminDashboardPage(driver);
+		
+		LoggedCookies = adminDashboardPage.getAllCookies(driver);
 	}
 	
 	@Test
@@ -65,9 +73,9 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		adminPostAddNewPage.enterToAddNewPostBody(postBody);
 		
 		log.info("Create_Post - Step 06: Click to 'Publish' button");
-		adminPostAddNewPage.clickToPublishButton();
+		adminPostAddNewPage.clickToPublishOrUpdateButton();
 		
-		log.info("Create_Post - Step 07: Click to 'Publish' button on Panel");
+		log.info("Create_Post - Step 07: Click to 'Publish' button pre-publish");
 		adminPostAddNewPage.clickToPrePublishButton();
 		
 		log.info("Create_Post - Step 08: Verify 'Post published' message is displayed");
@@ -113,6 +121,67 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	
 	@Test
 	public void Post_03_Edit_Post() {
+		log.info("Edit_Post - Step 01: Open Admin site");
+		adminLoginPage = userPostDetailPage.openAdminSite(driver, adminUrl);
+		adminLoginPage.setCookies(driver, LoggedCookies);
+		adminDashboardPage.openAdminSite(driver, adminUrl);
+		
+		log.info("Edit_Post - Step 02: Click to 'Posts' menu link");
+		adminPostSearchPage =  adminDashboardPage.clickToPostMenuLink();
+		
+		log.info("Edit_Post - Step 03: Enter to Search textbox");
+		adminPostSearchPage.inputToTextboxByID(driver, postTitle, "post-search-input");
+		
+		log.info("Edit_Post - Step 04: Click to 'Search Posts' button");
+		adminPostSearchPage.clickToSearchPostsButton();
+		
+		log.info("Edit_Post - Step 05: Click to Post title link and navigate to Edit Post page");
+		adminPostAddNewPage = adminPostSearchPage.clickToPostTitleLink(postTitle);
+		
+		log.info("Edit_Post - Step 06: Enter to post title");
+		adminPostAddNewPage.enterToAddNewPostTitle(editPostTitle);
+		
+		log.info("Edit_Post - Step 07: Enter to body");
+		adminPostAddNewPage.enterToEditPostBody(editPostBody);
+		
+		log.info("Edit_Post - Step 08: Click to 'Publish' button");
+		adminPostAddNewPage.clickToPublishOrUpdateButton();
+		
+		log.info("Edit_Post - Step 09: Verify 'Post updated.' message is displayed");
+		verifyTrue(adminPostAddNewPage.isPostPublishedMessageDisplayed("Post updated."));
+		
+		log.info("Edit_Post - Step 10: Open 'Search_Post' page");
+		adminPostSearchPage = adminPostSearchPage.openSearchPostPageUrl(searchPostUrl);
+		
+		log.info("Edit_Post - Step 11: Enter to Search textbox");
+		adminPostSearchPage.inputToTextboxByID(driver, editPostTitle, "post-search-input");
+		
+		log.info("Edit_Post - Step 12: Click to 'Search Posts' button");
+		adminPostSearchPage.clickToSearchPostsButton();
+		
+		log.info("Edit_Post - Step 13: Verify Search table contains '" + editPostTitle + "'");
+		verifyTrue(adminPostSearchPage.isPostSearchTableDisplayed("title",editPostTitle));
+		
+		log.info("Edit_Post - Step 14: Verify Search table contains '" + authorName + "'");
+		verifyTrue(adminPostSearchPage.isPostSearchTableDisplayed("author",authorName));
+		
+		log.info("Edit_Post - Step 15: Open End User site");
+		userHomePage = adminPostSearchPage.openEndUserSite(driver, endUserUrl);
+		
+		log.info("Edit_Post - Step 16: Verify Post infor displayed at Home page");
+		verifyTrue(userHomePage.isPostInforDisplayedWithPostTitle(editPostTitle));
+		verifyTrue(userHomePage.isPostInforDisplayedWithPostBody(editPostTitle, editPostBody));
+		verifyTrue(userHomePage.isPostInforDisplayedWithPostAuthor(editPostTitle, authorName));
+		verifyTrue(userHomePage.isPostInforDisplayedWithCurrentDate(editPostTitle, currentDate));
+		
+		log.info("Edit_Post - Step 17: Click to Post title");
+		userPostDetailPage = userHomePage.clickToPostTitle(postTitle);
+		
+		log.info("Edit_Post - Step 18: Verify Post infor displayed at Post detail page");
+		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostTitle(editPostTitle));
+		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostBody(editPostTitle, editPostBody));
+		verifyTrue(userPostDetailPage.isPostInforDisplayedWithAuthorName(editPostTitle, authorName));
+		verifyTrue(userPostDetailPage.isPostInforDisplayedWithCurrentDate(editPostTitle, currentDate));
 		
 	}
 	
@@ -127,6 +196,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	}
 	
 	private WebDriver driver;
+	public static Set<Cookie> LoggedCookies;
 	private AdminLoginPO adminLoginPage;
 	private AdminDashboardPO adminDashboardPage;
 	private AdminPostSearchPO adminPostSearchPage;

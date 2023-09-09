@@ -28,7 +28,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_17_Share_Data_B extends BaseTest{
+public class Level_17_Share_Data_01_Login extends BaseTest{
 	
 	@Parameters("browser")
 	@BeforeClass

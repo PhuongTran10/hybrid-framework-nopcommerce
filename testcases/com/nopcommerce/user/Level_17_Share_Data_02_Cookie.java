@@ -30,7 +30,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_17_Share_Data_C extends BaseTest{
+public class Level_17_Share_Data_02_Cookie extends BaseTest{
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -39,7 +39,6 @@ public class Level_17_Share_Data_C extends BaseTest{
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		firstName = "Automation";
 		lastName = "Testing";
-		
 		loginPage = homePage.clickToLoginLink();
 		
 		loginPage.setCookies(driver, Common_01_Register_Cookie.LoggedCookies);
