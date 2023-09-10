@@ -172,7 +172,7 @@ public class BasePage {
 		element.sendKeys(textValue);
 	}
 	
-	public void clearValueInElementByDeleteKey(WebDriver driver, String locatorType, String... dynamicValues) {
+	public void clearValueInElementByPressKey(WebDriver driver, String locatorType, String... dynamicValues) {
 		WebElement element = getWebElement(driver, getDynamicLocator(locatorType, dynamicValues));
 		if (GlobalConstants.OS_NAME.equals("Windows")) {
 			element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
@@ -545,9 +545,9 @@ public class BasePage {
 		return pageObjects.wordpress.PageGeneratorManager.getUserHomePage(driver);
 	}
 	
-	public AdminLoginPO openAdminSite(WebDriver driver, String adminUrl) {
+	public AdminDashboardPO openAdminSite(WebDriver driver, String adminUrl) {
 		openPageUrl(driver, adminUrl);
-		return pageObjects.wordpress.PageGeneratorManager.getAdminLoginPage(driver);
+		return pageObjects.wordpress.PageGeneratorManager.getAdminDashboardPage(driver);
 	}
 	
 	public long longTimeout = GlobalConstants.LONG_TIMEOUT;

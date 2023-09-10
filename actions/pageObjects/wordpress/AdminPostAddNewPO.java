@@ -15,7 +15,7 @@ public class AdminPostAddNewPO extends BasePage{
 
 	public void enterToAddNewPostTitle(String postTitleValue) {
 		waitForElementVisible(driver, AdminPostAddNewPageUI.TITLE_TEXTBOX);
-		clearValueInElementByDeleteKey(driver, AdminPostAddNewPageUI.TITLE_TEXTBOX);
+		clearValueInElementByPressKey(driver, AdminPostAddNewPageUI.TITLE_TEXTBOX);
 		sendkeyToElement(driver, AdminPostAddNewPageUI.TITLE_TEXTBOX, postTitleValue);
 	}
 
@@ -32,7 +32,7 @@ public class AdminPostAddNewPO extends BasePage{
 		clickToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
 		
 		waitForElementVisible(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
-		clearValueInElementByDeleteKey(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
+		clearValueInElementByPressKey(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
 		sendkeyToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX, postBodyValue);
 	}
 

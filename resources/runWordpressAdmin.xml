@@ -6,10 +6,10 @@
 		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
 	</listeners>
-	<parameter name="urlAdmin" value="http://automationtest.com:600/wp-admin" />
-	<parameter name="urlAdminMac" value="http://automationtest.com:86/wp-admin" />
-	<parameter name="urlUser" value="http://automationtest.com:600" />
-	<parameter name="urlUserMac" value="http://automationtest.com:86" />
+	<parameter name="adminUrl" value="http://automationtest.com:600/wp-admin" />
+	<parameter name="adminUrlMac" value="http://automationtest.com:86/wp-admin" />
+	<parameter name="userUrl" value="http://automationtest.com:600" />
+	<parameter name="userUrlMac" value="http://automationtest.com:86" />
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>

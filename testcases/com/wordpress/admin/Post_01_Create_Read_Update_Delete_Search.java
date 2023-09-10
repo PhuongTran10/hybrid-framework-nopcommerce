@@ -34,7 +34,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	String authorName = "Automation Test";
 	String adminUrl, endUserUrl;	
 	String currentDate = getCurrentDate();
-	@Parameters({"browser", "urlAdmin", "urlUser"})
+	@Parameters({"browser", "adminUrlMac", "userUrlMac"})
 	@BeforeClass
 	public void beforeClass(String browserName, String adminUrl, String endUserUrl) {
 		log.info("Pre-Condition - Step 01: Open browser and admin site");
@@ -51,8 +51,6 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		
 		log.info("Pre-Condition - Step 04: Click to 'Log In' button");
 		adminDashboardPage = adminLoginPage.clickToLoginButton();
-		
-		LoggedCookies = adminDashboardPage.getAllCookies(driver);
 	}
 	
 	@Test
@@ -122,9 +120,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	@Test
 	public void Post_03_Edit_Post() {
 		log.info("Edit_Post - Step 01: Open Admin site");
-		adminLoginPage = userPostDetailPage.openAdminSite(driver, adminUrl);
-		adminLoginPage.setCookies(driver, LoggedCookies);
-		adminDashboardPage.openAdminSite(driver, adminUrl);
+		adminDashboardPage = userPostDetailPage.openAdminSite(driver, adminUrl);
 		
 		log.info("Edit_Post - Step 02: Click to 'Posts' menu link");
 		adminPostSearchPage =  adminDashboardPage.clickToPostMenuLink();
@@ -175,7 +171,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		verifyTrue(userHomePage.isPostInforDisplayedWithCurrentDate(editPostTitle, currentDate));
 		
 		log.info("Edit_Post - Step 17: Click to Post title");
-		userPostDetailPage = userHomePage.clickToPostTitle(postTitle);
+		userPostDetailPage = userHomePage.clickToPostTitle(editPostTitle);
 		
 		log.info("Edit_Post - Step 18: Verify Post infor displayed at Post detail page");
 		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostTitle(editPostTitle));
@@ -187,7 +183,52 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	
 	@Test
 	public void Post_04_Delete_Post() {
+		log.info("Delete_Post - Step 01: Open Admin site");
+		adminDashboardPage = userPostDetailPage.openAdminSite(driver, adminUrl);
+		 
+		log.info("Delete_Post - Step 02: Click to 'Posts' menu link");
+		adminPostSearchPage =  adminDashboardPage.clickToPostMenuLink();
 		
+		log.info("Delete_Post - Step 03: Enter to Search textbox");
+		adminPostSearchPage.inputToTextboxByID(driver, postTitle, "post-search-input");
+		
+		log.info("Delete_Post - Step 04: Click to 'Search Posts' button");
+		adminPostSearchPage.clickToSearchPostsButton();
+		
+		log.info("Delete_Post - Step 05: Select Post detail checkbox");
+		
+		
+		log.info("Delete_Post - Step 06: Select 'Move to Trash' item in dropdown");
+		
+		
+		log.info("Delete_Post - Step 07: Click to 'Apply' button");
+		
+		
+		log.info("Delete_Post - Step 08: Verify '1 post move to the trash.' message is displayed");
+		
+		
+		log.info("Delete_Post - Step 09: Enter to Search textbox");
+		adminPostSearchPage.inputToTextboxByID(driver, editPostTitle, "post-search-input");
+		
+		log.info("Delete_Post - Step 10: Click to 'Search Posts' button");
+		adminPostSearchPage.clickToSearchPostsButton();
+		
+		log.info("Delete_Post - Step 11: Verify 'No posts found.' message is displayed");
+		
+		
+		log.info("Delete_Post - Step 12: Open End User site");
+		userHomePage = adminPostSearchPage.openEndUserSite(driver, endUserUrl);
+		
+		log.info("Delete_Post - Step 13: Verify Post title undisplayed at Home page");
+		
+		
+		log.info("Delete_Post - Step 14: Enter to Search textbox");
+		
+		
+		log.info("Delete_Post - Step 15: Click to 'Search' button");
+		
+		
+		log.info("Delete_Post - Step 16: Verify 'Nothing found' message is displayed");
 	}
 	
 	@AfterClass(alwaysRun = true)
