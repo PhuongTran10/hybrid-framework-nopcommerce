@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import commons.BasePage;
 import pageUIs.wordpress.admin.AdminPostAddNewPageUI;
 
-public class AdminPostAddNewPO extends BasePage{
-	
+public class AdminPostAddNewPO extends BasePage {
+
 	private WebDriver driver;
-	
+
 	public AdminPostAddNewPO(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -22,11 +22,11 @@ public class AdminPostAddNewPO extends BasePage{
 	public void enterToAddNewPostBody(String postBodyValue) {
 		waitForElementClickable(driver, AdminPostAddNewPageUI.BODY_BUTTON);
 		clickToElement(driver, AdminPostAddNewPageUI.BODY_BUTTON);
-		
+
 		waitForElementVisible(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
 		sendkeyToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX, postBodyValue);
 	}
-	
+
 	public void enterToEditPostBody(String postBodyValue) {
 		waitForElementClickable(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
 		clickToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
@@ -45,11 +45,10 @@ public class AdminPostAddNewPO extends BasePage{
 		waitForElementClickable(driver, AdminPostAddNewPageUI.PRE_PUBLISH_BUTTON);
 		clickToElement(driver, AdminPostAddNewPageUI.PRE_PUBLISH_BUTTON);
 	}
-	
+
 	public boolean isPostPublishedMessageDisplayed(String postPublishedMessage) {
 		waitForElementVisible(driver, AdminPostAddNewPageUI.PUBLISHED_OR_UPDATE_POST_MESSAGE, postPublishedMessage);
 		return isElementDisplayed(driver, AdminPostAddNewPageUI.PUBLISHED_OR_UPDATE_POST_MESSAGE, postPublishedMessage);
 	}
-
 
 }

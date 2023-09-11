@@ -32,6 +32,7 @@ import pageObjects.wordpress.UserHomePO;
 import pageUIs.jQuery.uploadFile.BasePageJQueryUI;
 import pageUIs.nopCommerce.admin.AdminBasePageUI;
 import pageUIs.nopCommerce.user.UserBasePageUI;
+import pageUIs.wordpress.admin.AdminLoginPageUI;
 
 public class BasePage {
 	public static BasePage getBasePageObject() {
@@ -174,10 +175,12 @@ public class BasePage {
 	
 	public void clearValueInElementByPressKey(WebDriver driver, String locatorType, String... dynamicValues) {
 		WebElement element = getWebElement(driver, getDynamicLocator(locatorType, dynamicValues));
-		if (GlobalConstants.OS_NAME.equals("Windows")) {
-			element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-		} else {
+		String os = GlobalConstants.OS_NAME.toLowerCase();
+		System.out.println(os);
+		if (os.contains("mac")) {
 			element.sendKeys(Keys.chord(Keys.COMMAND, "a", Keys.DELETE));
+		} else {
+			element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 		}
 	}
 		
@@ -255,10 +258,10 @@ public class BasePage {
 		return getWebElement(driver, getDynamicLocator(locatorType, dynamicValues)).isDisplayed();
 	}
 	
-	public boolean isElementUndisplayed(WebDriver driver, String locatorType) {
+	public boolean isElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
 		System.out.println("Start time = " + new Date().toString());
 		overrideImplicitTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
-		List<WebElement> elements = getListWebElement(driver, locatorType);
+		List<WebElement> elements = getListWebElement(driver, getDynamicLocator(locatorType, dynamicValues));
 		overrideImplicitTimeout(driver, GlobalConstants.LONG_TIMEOUT);
 		
 		if(elements.size() == 0) {
@@ -545,8 +548,15 @@ public class BasePage {
 		return pageObjects.wordpress.PageGeneratorManager.getUserHomePage(driver);
 	}
 	
-	public AdminDashboardPO openAdminSite(WebDriver driver, String adminUrl) {
+	public AdminDashboardPO openAdminSite(WebDriver driver, String adminUrl, String value, String textboxID) {
 		openPageUrl(driver, adminUrl);
+		sleepInSecond(longTimeout);
+		List<WebElement> listElement = getListWebElement(driver, AdminLoginPageUI.LOGIN_BUTTON);
+		int ElementSize = listElement.size();
+		if(ElementSize > 0 && listElement.get(0).isDisplayed()) {
+			inputToTextboxByID(driver, value, textboxID);
+			clickToElement(driver, AdminLoginPageUI.LOGIN_BUTTON);
+		}
 		return pageObjects.wordpress.PageGeneratorManager.getAdminDashboardPage(driver);
 	}
 	

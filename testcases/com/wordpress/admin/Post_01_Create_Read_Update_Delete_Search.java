@@ -4,13 +4,10 @@ import java.util.Set;
 
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Sleeper;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import com.nopcommerce.common.Common_01_Register_Cookie;
 
 import commons.BaseTest;
 import pageObjects.wordpress.AdminDashboardPO;
@@ -20,6 +17,7 @@ import pageObjects.wordpress.AdminPostSearchPO;
 import pageObjects.wordpress.PageGeneratorManager;
 import pageObjects.wordpress.UserHomePO;
 import pageObjects.wordpress.UserPostDetailPO;
+import pageObjects.wordpress.UserSearchPostPO;
 
 public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	
@@ -34,7 +32,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	String authorName = "Automation Test";
 	String adminUrl, endUserUrl;	
 	String currentDate = getCurrentDate();
-	@Parameters({"browser", "adminUrlMac", "userUrlMac"})
+	@Parameters({"browser", "adminUrl", "userUrl"})
 	@BeforeClass
 	public void beforeClass(String browserName, String adminUrl, String endUserUrl) {
 		log.info("Pre-Condition - Step 01: Open browser and admin site");
@@ -66,7 +64,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		
 		log.info("Create_Post - Step 04: Enter to post title");
 		adminPostAddNewPage.enterToAddNewPostTitle(postTitle);
-		
+	
 		log.info("Create_Post - Step 05: Enter to body");
 		adminPostAddNewPage.enterToAddNewPostBody(postBody);
 		
@@ -120,7 +118,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	@Test
 	public void Post_03_Edit_Post() {
 		log.info("Edit_Post - Step 01: Open Admin site");
-		adminDashboardPage = userPostDetailPage.openAdminSite(driver, adminUrl);
+		adminDashboardPage = userPostDetailPage.openAdminSite(driver, adminUrl, adminPassword, "user_pass");
 		
 		log.info("Edit_Post - Step 02: Click to 'Posts' menu link");
 		adminPostSearchPage =  adminDashboardPage.clickToPostMenuLink();
@@ -184,28 +182,28 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	@Test
 	public void Post_04_Delete_Post() {
 		log.info("Delete_Post - Step 01: Open Admin site");
-		adminDashboardPage = userPostDetailPage.openAdminSite(driver, adminUrl);
+		adminDashboardPage = userPostDetailPage.openAdminSite(driver, adminUrl, adminPassword, "user_pass");
 		 
 		log.info("Delete_Post - Step 02: Click to 'Posts' menu link");
 		adminPostSearchPage =  adminDashboardPage.clickToPostMenuLink();
 		
 		log.info("Delete_Post - Step 03: Enter to Search textbox");
-		adminPostSearchPage.inputToTextboxByID(driver, postTitle, "post-search-input");
+		adminPostSearchPage.inputToTextboxByID(driver, editPostTitle, "post-search-input");
 		
 		log.info("Delete_Post - Step 04: Click to 'Search Posts' button");
 		adminPostSearchPage.clickToSearchPostsButton();
 		
 		log.info("Delete_Post - Step 05: Select Post detail checkbox");
-		
+		adminPostSearchPage.selectPostCheckboxByTitle(editPostTitle);
 		
 		log.info("Delete_Post - Step 06: Select 'Move to Trash' item in dropdown");
-		
+		adminPostSearchPage.selectTextItemInActionDropdown("Move to Trash");
 		
 		log.info("Delete_Post - Step 07: Click to 'Apply' button");
-		
+		adminPostSearchPage.clickToApplyButton();
 		
 		log.info("Delete_Post - Step 08: Verify '1 post move to the trash.' message is displayed");
-		
+		verifyTrue(adminPostSearchPage.isMoveToTrashMessageDisplayed("1 post move to the trash."));
 		
 		log.info("Delete_Post - Step 09: Enter to Search textbox");
 		adminPostSearchPage.inputToTextboxByID(driver, editPostTitle, "post-search-input");
@@ -214,21 +212,22 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		adminPostSearchPage.clickToSearchPostsButton();
 		
 		log.info("Delete_Post - Step 11: Verify 'No posts found.' message is displayed");
-		
+		verifyTrue(adminPostSearchPage.isNoPostFoundMessageDisplayed("No posts found."));
 		
 		log.info("Delete_Post - Step 12: Open End User site");
 		userHomePage = adminPostSearchPage.openEndUserSite(driver, endUserUrl);
 		
 		log.info("Delete_Post - Step 13: Verify Post title undisplayed at Home page");
-		
+		verifyTrue(userHomePage.isPostInforUndisplayedWithPostTitle(editPostTitle));
 		
 		log.info("Delete_Post - Step 14: Enter to Search textbox");
-		
+		userHomePage.enterToSearchTextbox(editPostTitle);
 		
 		log.info("Delete_Post - Step 15: Click to 'Search' button");
-		
+		userSearchPostPage =userHomePage.clickToSearchPostsButton();
 		
 		log.info("Delete_Post - Step 16: Verify 'Nothing found' message is displayed");
+		verifyTrue(userSearchPostPage.isNothingFoundMessageDisplayed("Nothing found"));
 	}
 	
 	@AfterClass(alwaysRun = true)
@@ -244,5 +243,6 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 	private AdminPostAddNewPO adminPostAddNewPage;
 	private UserHomePO userHomePage;
 	private UserPostDetailPO userPostDetailPage;
+	private UserSearchPostPO userSearchPostPage;
 	
 }
