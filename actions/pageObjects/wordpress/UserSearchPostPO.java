@@ -3,7 +3,9 @@ package pageObjects.wordpress;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import pageUIs.wordpress.admin.UserHomePageUI;
 import pageUIs.wordpress.admin.UserPostDetailPageUI;
+import pageUIs.wordpress.admin.UserSearchPostPageUI;
 
 public class UserSearchPostPO extends BasePage{
 	
@@ -13,9 +15,9 @@ public class UserSearchPostPO extends BasePage{
 		this.driver = driver;
 	}
 
-	public boolean isNothingFoundMessageDisplayed(String string) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isNothingFoundMessageDisplayed(String message) {
+		waitForElementVisible(driver, UserSearchPostPageUI.NOTHING_FOUND_MESSAGE, message);
+		return isElementDisplayed(driver, UserSearchPostPageUI.NOTHING_FOUND_MESSAGE, message);
 	}
 
 	

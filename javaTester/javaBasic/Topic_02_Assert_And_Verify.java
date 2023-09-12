@@ -1,20 +1,17 @@
 package javaBasic;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import commons.GlobalConstants;
 
 @Listeners(commons.MethodListener.class)
 public class Topic_02_Assert_And_Verify extends BaseTest{
@@ -24,9 +21,8 @@ public class Topic_02_Assert_And_Verify extends BaseTest{
 
 	@BeforeClass
 	public void beforeClass() {
-		WebDriverManager.firefoxdriver().setup();
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.manage().window().maximize();
 		driver.get("https://www.facebook.com/");
 	}

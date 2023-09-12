@@ -227,7 +227,7 @@ public class Post_01_Create_Read_Update_Delete_Search extends BaseTest{
 		userSearchPostPage =userHomePage.clickToSearchPostsButton();
 		
 		log.info("Delete_Post - Step 16: Verify 'Nothing found' message is displayed");
-		verifyTrue(userSearchPostPage.isNothingFoundMessageDisplayed("Nothing found"));
+		verifyTrue(userSearchPostPage.isNothingFoundMessageDisplayed("Nothing Found"));
 	}
 	
 	@AfterClass(alwaysRun = true)

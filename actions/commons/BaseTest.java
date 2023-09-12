@@ -2,15 +2,13 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
+import java.time.Duration;
 import java.util.Locale;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.WebDriver;
@@ -19,12 +17,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.opera.OperaDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
@@ -41,33 +36,27 @@ public class BaseTest {
 		System.out.println("Run on " + browserName);
 
 		if (browserName.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		} else if (browserName.equals("h_firefox")) {
-			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions options = new FirefoxOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920X1080");
 			driver = new FirefoxDriver(options);
 		} else if (browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().create();
 			driver = new ChromeDriver();
 		} else if (browserName.equals("edge")) {
-			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 		} else if (browserName.equals("coccoc")) {
-			WebDriverManager.chromedriver().driverVersion("112.0.5615.49").setup();
+			//WebDriverManager.chromedriver().driverVersion("112.0.5615.49").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
 			driver = new ChromeDriver(options);
-		} else if (browserName.equals("opera")) {
-			WebDriverManager.operadriver().setup();
-			driver = new OperaDriver();
 		} else {
 			throw new RuntimeException("Browser name invalid");
 		}
 
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.manage().window().maximize();
 		driver.get(GlobalConstants.USER_DEV_URL);
 		return driver;
@@ -77,33 +66,26 @@ public class BaseTest {
 		System.out.println("Run on " + browserName);
 
 		if (browserName.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		} else if (browserName.equals("h_firefox")) {
-			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions options = new FirefoxOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920X1080");
 			driver = new FirefoxDriver(options);
 		} else if (browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		} else if (browserName.equals("edge")) {
-			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 		} else if (browserName.equals("coccoc")) {
-			WebDriverManager.chromedriver().driverVersion("112.0.5615.49").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
 			driver = new ChromeDriver(options);
-		} else if (browserName.equals("opera")) {
-			WebDriverManager.operadriver().setup();
-			driver = new OperaDriver();
 		} else {
 			throw new RuntimeException("Browser name invalid");
 		}
 
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.manage().window().maximize();
 		driver.get(appUrl);
 		return driver;
