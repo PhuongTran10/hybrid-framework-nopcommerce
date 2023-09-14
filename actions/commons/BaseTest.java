@@ -6,8 +6,8 @@ import java.time.Duration;
 import java.util.Locale;
 import java.util.Random;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -25,11 +25,12 @@ public class BaseTest {
 
 	@BeforeSuite
 	public void initBeforeSuit() {
-		deleteAllureReport();
+		deleteAllFileInFolder("reportNGImages");
+		deleteAllFileInFolder("allure-json");
 	}
 
 	protected BaseTest() {
-		log = LogFactory.getLog(getClass());
+		log = LogManager.getLogger(getClass());
 	}
 
 	protected WebDriver getBrowserDriver(String browserName) {
@@ -158,9 +159,9 @@ public class BaseTest {
 		return pass;
 	}
 
-	public void deleteAllureReport() {
+	public void deleteAllFileInFolder(String folderName) {
 		try {
-			String pathFolderDownload = GlobalConstants.PROJECT_PATH + "/allure-results";
+			String pathFolderDownload = GlobalConstants.PROJECT_PATH + File.separator + folderName ;
 			File file = new File(pathFolderDownload);
 			File[] listOfFiles = file.listFiles();
 			for (int i = 0; i < listOfFiles.length; i++) {
@@ -257,5 +258,5 @@ public class BaseTest {
 	}
 
 	private WebDriver driver;
-	protected final Log log;
+	protected final Logger log;
 }

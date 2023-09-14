@@ -2,8 +2,8 @@ package commons;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
@@ -52,5 +52,5 @@ public class MethodListener implements IInvokedMethodListener {
 		}
 	}
 
-	private static final Log log = LogFactory.getLog(MethodListener.class);
+	private static final Logger log = LogManager.getLogger(MethodListener.class);
 }

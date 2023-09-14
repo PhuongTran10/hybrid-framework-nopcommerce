@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="NopCommerce">
 	<listeners>
-		 <listener class-name="commons.MethodListener"></listener>
-		<listener class-name="reportConfig.ReportNGListener"></listener>
-	<!--	<listener class-name="reportConfig.ExtentTestListener"></listener>
-		<listener class-name="reportConfig.AllureTestListener"></listener>-->
-		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
+		<listener class-name="commons.MethodListener"></listener>
+		<!--<listener class-name="reportConfig.ReportNGListener"></listener>
+		<listener class-name="reportConfig.ExtentTestListener"></listener>-->
+		<listener class-name="reportConfig.AllureTestListener"></listener>
+		<!--<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>-->
 	</listeners>
-	
-<parameter name="environment" value="dev"/>
-
- <test name="Run on Firefox">
-	<parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="com.nopcommerce.user.Level_14_Log_ReportNG"/>
-    </classes>
-  </test> 
-</suite> 
+	<parameter name="environment" value="dev" />
+	<test name="Run on Firefox">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.nopcommerce.user.Level_16_Allure_Report" />
+		</classes>
+	</test>
+</suite>
