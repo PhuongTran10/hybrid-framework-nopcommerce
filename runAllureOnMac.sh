@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "------ Step 01: Set project path to variable -------"
-project_path="/Users/daominhdam/git/hybrid-framework-techpanda-23"
+project_path="/Users/phuong/Documents/Selenium/03 - Java Hybrid Framework"
 echo "------ Step 02: Go to project path folder -------"
 cd "$project_path"
 echo "------ Step 03: Run the testcases -------"
