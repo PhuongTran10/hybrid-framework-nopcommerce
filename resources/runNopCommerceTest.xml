@@ -11,6 +11,12 @@
 	</listeners>
 	<parameter name="environment" value="dev" />
 	<test name="Run on Firefox">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.nopcommerce.user.Level_14_Log_ReportNG" />
+		</classes>
+	</test>
+	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="com.nopcommerce.user.Level_14_Log_ReportNG" />

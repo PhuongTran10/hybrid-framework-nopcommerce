@@ -36,5 +36,7 @@
 	<classpathentry kind="lib" path="libAllure/bsh-2.0b6.jar"/>
 	<classpathentry kind="lib" path="libAllure/jcommander-1.72.jar"/>
 	<classpathentry kind="lib" path="libAllure/slf4j-api-1.7.36.jar"/>
+	<classpathentry kind="lib" path="libAssertJ/assertj-core-3.24.2.jar"/>
+	<classpathentry kind="lib" path="libAssertJ/byte-buddy-1.12.21.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
