@@ -3,22 +3,36 @@ package commons;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.bidi.LogInspector;
+import org.openqa.selenium.bidi.log.ConsoleLogEntry;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.HasDevTools;
+import org.openqa.selenium.devtools.v85.console.Console;
+import org.openqa.selenium.devtools.v85.log.Log;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -53,6 +67,7 @@ public class BaseTest {
 			ChromeOptions optionsChrome = new ChromeOptions();
 			optionsChrome.addExtensions(file);
 			driver = new ChromeDriver(optionsChrome);
+			
 			break;
 		case EDGE:
 			driver = new EdgeDriver();
@@ -272,6 +287,16 @@ public class BaseTest {
 
 	protected String getCurrentDate() {
 		return getCurrentDay() + "/" + getCurrentMonth() + "/" + getCurrentYear();
+	}
+	
+	protected void showBrowserConsoleLogs(WebDriver driver) {
+		DevTools devTools = ((ChromeDriver) driver).getDevTools();
+		devTools.createSession();
+		devTools.send(Log.enable());
+		devTools.addListener(Log.entryAdded(), logEntry -> {
+			log.info(logEntry.getText() + "\n");
+			log.info(logEntry.getLevel()+ "\n");
+		});
 	}
 
 	private WebDriver driver;

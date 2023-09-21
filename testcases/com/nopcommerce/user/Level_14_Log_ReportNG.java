@@ -25,7 +25,8 @@ public class Level_14_Log_ReportNG extends BaseTest{
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-				
+		showBrowserConsoleLogs(driver);
+		
 		firstName = "Automation";
 		lastName = "Testing";
 		existingEmail = "abc"+ generateFakeNumber() + "@gmail.com";
@@ -36,6 +37,7 @@ public class Level_14_Log_ReportNG extends BaseTest{
 	public void User_01_Register() {
 		log.info("Register - Step 01: Navigate to 'Register' page");
 		registerPage = homePage.clickToRegisterLink();
+		showBrowserConsoleLogs(driver);
 		
 		log.info("Register - Step 02: Enter to Firstname textbox with value is '" + firstName + "'");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -54,6 +56,7 @@ public class Level_14_Log_ReportNG extends BaseTest{
 		
 		log.info("Register - Step 07: Click to 'Register' button");
 		homePage = registerPage.clickToRegisterButton();
+		showBrowserConsoleLogs(driver);
 		
 		log.info("Register - Step 08: Verify success register message is displayed");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(),"Your registration completed..");

@@ -18,15 +18,18 @@ public class Level_10_Datatable_DataGrid extends BaseTest{
 	public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
 		homePage = PageGeneratorManager.getHomePage(driver);
+		showBrowserConsoleLogs(driver);
 	}
 	
 	//@Test
 	public void Table_01_Paging() {
 		homePage.openPagingByPageNumber("10");
 		homePage.sleepInSecond(1);
+		showBrowserConsoleLogs(driver);
 		Assert.assertTrue(homePage.isPagenationPageActiveDisplayed("10"));
 		homePage.openPagingByPageNumber("20");
 		homePage.sleepInSecond(1);
+		showBrowserConsoleLogs(driver);
 		Assert.assertTrue(homePage.isPagenationPageActiveDisplayed("20"));
 		homePage.openPagingByPageNumber("7");
 		homePage.sleepInSecond(1);

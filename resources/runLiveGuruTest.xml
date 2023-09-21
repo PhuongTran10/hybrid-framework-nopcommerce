@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="NopCommerce">
-	
+	<listeners>
+		<listener class-name="commons.MethodListener"></listener>
+		<listener class-name="reportConfig.ReportNGListener"></listener>
+	<!--	<listener class-name="reportConfig.ExtentTestListener"></listener>
+		<listener class-name="reportConfig.AllureTestListener"></listener>-->
+		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
+	</listeners>
 <!--<test name="Run on Firefox">
 	<parameter name="browser" value="firefox"/>
     <classes>
@@ -14,9 +21,10 @@
     </classes>
   </test> -->
   <test name="Run on Chrome">
+	<parameter name="userUrl" value="http://live.techpanda.org/" />
 	<parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.liveGuru.user.Level_10_Data_Table"/>
+      <class name="com.liveGuru.user.Level_06_Page_Generator_Manager_III"/>
     </classes>
   </test> 
  <!-- <test name="Run on Edge">

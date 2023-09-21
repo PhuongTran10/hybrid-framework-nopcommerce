@@ -17,11 +17,13 @@ import org.testng.annotations.AfterClass;
 
 public class Level_06_Page_Generator_Manager_III extends BaseTest{
 	
-	@Parameters("browser")
+	@Parameters({"browser","userUrl"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String endUserUrl) {
+		driver = getBrowserDriver(browserName, endUserUrl);
+		showBrowserConsoleLogs(driver);
 		homePage = PageGeneratorManager.getHomPage(driver);
+		
 		emailValid = "abc" + generateFakeNumber() + "@gmail.com";
 		password = "123456";
 	}
@@ -36,11 +38,14 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest{
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(password);
 		myDashboardPage = registerPage.clickToRegisterButton();
-		
+		showBrowserConsoleLogs(driver);
 		Assert.assertEquals(myDashboardPage.getRegisterSuccessMessage(), "Thank you for registering with Main Website Store.");
 		
+		
 		myDashboardPage.clickToAccountLink();
+		showBrowserConsoleLogs(driver);
 		homePage = myDashboardPage.clickToLogoutlink();
+		showBrowserConsoleLogs(driver);
 		
 	}
 	@Test
@@ -49,6 +54,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest{
 		loginPage.inputToEmailAddressTextbox(emailValid);
 		loginPage.inputToPasswordTextbox(password);
 		myDashboardPage = loginPage.clickTologinButton();
+		showBrowserConsoleLogs(driver);
 		
 		Assert.assertTrue(myDashboardPage.isAccountInformationLinkDisplayed());
 	}
