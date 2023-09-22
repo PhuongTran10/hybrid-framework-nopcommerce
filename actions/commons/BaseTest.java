@@ -3,36 +3,23 @@ package commons;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.bidi.LogInspector;
-import org.openqa.selenium.bidi.log.ConsoleLogEntry;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.HasDevTools;
-import org.openqa.selenium.devtools.v85.console.Console;
 import org.openqa.selenium.devtools.v85.log.Log;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -55,17 +42,23 @@ public class BaseTest {
 
 		switch (browserList) {
 		case FIREFOX:
+			//Disable 
+			
+			
+			//Add extension to Firefox
 			FirefoxProfile profile = new FirefoxProfile();
 			File translate = new File(GlobalConstants.PROJECT_PATH + File.separator + "browserExtensions" + File.separator + "to_google_translate-4.2.0.xpi");
 			profile.addExtension(translate);
 			FirefoxOptions optionsFirefox = new FirefoxOptions();
 			optionsFirefox.setProfile(profile);
+			
 			driver = new FirefoxDriver(optionsFirefox);
 			break;
 		case CHROME:
 			File file = new File(GlobalConstants.PROJECT_PATH + File.separator + "browserExtensions" + File.separator + "Unconfirmed 320349.crdownload");
 			ChromeOptions optionsChrome = new ChromeOptions();
 			optionsChrome.addExtensions(file);
+			
 			driver = new ChromeDriver(optionsChrome);
 			
 			break;
