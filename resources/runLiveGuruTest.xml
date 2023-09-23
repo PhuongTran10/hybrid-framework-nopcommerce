@@ -24,7 +24,7 @@
 	<parameter name="userUrl" value="http://live.techpanda.org/" />
 	<parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.liveGuru.user.Level_06_Page_Generator_Manager_III"/>
+      <class name="com.liveGuru.user.Level_10_Data_Table"/>
     </classes>
   </test> 
  <!-- <test name="Run on Edge">

@@ -8,7 +8,7 @@
     </classes>
   </test> 
   <test name="Run on Headless Firefox">
-	  <parameter name="browser" value="h_firefox"/>
+	  <parameter name="browser" value="firefox"/>
     <classes>
       <class name="com.jquery.Level_11_Upload_Files"/>
     </classes>

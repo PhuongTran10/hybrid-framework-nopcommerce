@@ -3,7 +3,10 @@ package commons;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
@@ -41,28 +44,29 @@ public class BaseTest {
 		BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
 
 		switch (browserList) {
-		case FIREFOX:
-			//Disable 
-			
-			
-			//Add extension to Firefox
-			FirefoxProfile profile = new FirefoxProfile();
-			File translate = new File(GlobalConstants.PROJECT_PATH + File.separator + "browserExtensions" + File.separator + "to_google_translate-4.2.0.xpi");
-			profile.addExtension(translate);
-			FirefoxOptions optionsFirefox = new FirefoxOptions();
-			optionsFirefox.setProfile(profile);
-			
-			driver = new FirefoxDriver(optionsFirefox);
+		case FIREFOX:	
+			driver = new FirefoxDriver();
 			break;
-		case CHROME:
-			File file = new File(GlobalConstants.PROJECT_PATH + File.separator + "browserExtensions" + File.separator + "Unconfirmed 320349.crdownload");
+		case CHROME:		
 			ChromeOptions optionsChrome = new ChromeOptions();
-			optionsChrome.addExtensions(file);
+			//Disable notifications
+			optionsChrome.addArguments("--disable-notifications");
+			
+			//Disable automation info bar
+			optionsChrome.setExperimentalOption("useAutomationExtension", false);
+			optionsChrome.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+			
+			//Disable save password popup
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			optionsChrome.setExperimentalOption("prefs", prefs);
 			
 			driver = new ChromeDriver(optionsChrome);
-			
 			break;
 		case EDGE:
+			ChromeOptions optionsEdge = new ChromeOptions();
+			optionsEdge.addArguments("--lang=vi");
 			driver = new EdgeDriver();
 			break;
 		case COCCOC:
@@ -97,6 +101,7 @@ public class BaseTest {
 			options.addArguments("window-size=1920X1080");
 			driver = new FirefoxDriver(options);
 		} else if (browserName.equals("chrome")) {
+			//System.setProperty("webdriver.chrome.driver", GlobalConstants.PROJECT_PATH + File.separator + "browserDrivers" + File.separator + "chromedriver");
 			//WebDriverManager.chromedriver().setup();
 			//WebDriverManager.chromedriver().create();
 			driver = new ChromeDriver();
