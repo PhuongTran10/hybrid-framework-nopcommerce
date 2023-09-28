@@ -23,6 +23,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -79,6 +80,9 @@ public class BaseTest {
 			optionsHFirefox.addArguments("--headless");
 			optionsHFirefox.addArguments("window-size=1920X1080");
 			driver = new FirefoxDriver(optionsHFirefox);
+			break;	
+		case SAFARI:
+			driver = new SafariDriver();
 			break;
 			
 		default:
