@@ -3,6 +3,7 @@ package commons;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
@@ -148,6 +149,10 @@ public class BaseTest {
 	public static int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
+	}
+	
+	public static long getRandomNumberByDateTime() {
+		return Calendar.getInstance().getTimeInMillis() % 100000;
 	}
 
 	protected boolean verifyTrue(boolean condition) {

@@ -38,5 +38,9 @@
 	<classpathentry kind="lib" path="libAllure/slf4j-api-1.7.36.jar"/>
 	<classpathentry kind="lib" path="libAssertJ/assertj-core-3.24.2.jar"/>
 	<classpathentry kind="lib" path="libAssertJ/byte-buddy-1.12.21.jar"/>
+	<classpathentry kind="lib" path="libFaker/commons-lang3-3.5.jar"/>
+	<classpathentry kind="lib" path="libFaker/generex-1.0.2.jar"/>
+	<classpathentry kind="lib" path="libFaker/javafaker-1.0.1.jar" sourcepath="libFaker/javafaker-1.0.2-sources.jar"/>
+	<classpathentry kind="lib" path="libFaker/snakeyaml-1.23.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
