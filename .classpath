@@ -21,11 +21,10 @@
 	<classpathentry kind="lib" path="libReportNG/reportng-1.1.4.jar"/>
 	<classpathentry kind="lib" path="libReportNG/velocity-1.4.jar"/>
 	<classpathentry kind="lib" path="libSelenium/joda-time-2.0.jar"/>
-	<classpathentry kind="lib" path="libSelenium/selenium-server-4.12.1.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/jackson-annotations-2.10.3.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/jackson-core-2.10.3.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/jackson-databind-2.10.3.jar"/>
-	<classpathentry kind="lib" path="libSelenium/testng-7.8.0.jar"/>
+	<classpathentry kind="lib" path="libSelenium/testng-7.8.0.jar" sourcepath="libSelenium/testng-7.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="libLog4JVer2/log4j-api-2.19.0.jar"/>
 	<classpathentry kind="lib" path="libLog4JVer2/log4j-core-2.19.0.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/commons-io-2.6.jar"/>
@@ -42,5 +41,6 @@
 	<classpathentry kind="lib" path="libFaker/generex-1.0.2.jar"/>
 	<classpathentry kind="lib" path="libFaker/javafaker-1.0.1.jar" sourcepath="libFaker/javafaker-1.0.2-sources.jar"/>
 	<classpathentry kind="lib" path="libFaker/snakeyaml-1.23.jar"/>
+	<classpathentry kind="lib" path="libSelenium/selenium-server-4.13.0.jar" sourcepath="libSelenium/selenium-selenium-4.13.0.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
