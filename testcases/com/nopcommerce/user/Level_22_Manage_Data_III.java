@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.nopcommerce.common.Common_01_Register_Cookie;
 import com.nopcommerce.common.Common_01_Register_End_User;
-import com.nopcommerce.data.UserData;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
@@ -20,6 +19,7 @@ import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointPageObject;
 import reportConfig.ExtentTestManager;
+import utilities.DataHelper;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -31,7 +31,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_19_Pattern_Object extends BaseTest{
+public class Level_22_Manage_Data_III extends BaseTest{
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -39,14 +39,10 @@ public class Level_19_Pattern_Object extends BaseTest{
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
-		firstName = UserData.firstName;
-		lastName = UserData.lastName;
-		existingEmail = UserData.existingEmail + generateFakeNumber() + "@gmail.com";
-		validPassword = UserData.validPassword;
-		date = UserData.date;
-		month = UserData.month;
-		year = UserData.year;
-		gender = UserData.gender;
+		date = "7";
+		month = "February";
+		year = "2000";
+		gender = "Male";
 		
 	}
 	
