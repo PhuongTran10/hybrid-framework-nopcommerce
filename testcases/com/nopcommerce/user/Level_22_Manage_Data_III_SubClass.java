@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.nopcommerce.common.Common_01_Register_Cookie;
 import com.nopcommerce.common.Common_01_Register_End_User;
+import com.nopcommerce.data.UserData_No_SubClass;
+import com.nopcommerce.data.UserData_SubClass;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
@@ -31,18 +33,22 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_22_Manage_Data_III extends BaseTest{
+public class Level_22_Manage_Data_III_SubClass extends BaseTest{
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-				
-		date = "7";
-		month = "February";
-		year = "2000";
-		gender = "Male";
+		
+		firstName = UserData_SubClass.Register.FIRSTNAME;
+		lastName = UserData_SubClass.Register.LASTNAME;
+		existingEmail = UserData_SubClass.Register.EMAIL + generateFakeNumber() + "@gmail.com";
+		validPassword = UserData_SubClass.Register.PASSWORD;
+		date = UserData_SubClass.Register.DATE;
+		month = UserData_SubClass.Register.MONTH;
+		year = UserData_SubClass.Register.YEAR;
+		gender = UserData_SubClass.Register.GENDER;
 		
 	}
 	

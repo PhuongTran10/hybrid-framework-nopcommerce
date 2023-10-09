@@ -27,7 +27,7 @@ public class UserDataMapper {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-			return mapper.readValue(new File(GlobalConstants.PROJECT_PATH + "/resources/UserData.json"),
+			return mapper.readValue(new File(GlobalConstants.PROJECT_PATH + "/resources/userData.json"),
 					UserDataMapper.class);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,6 +49,30 @@ public class UserDataMapper {
 
 	public String getValidPassword() {
 		return validPassword;
+	}
+	
+	@JsonProperty("preference")
+	private Preference preference;
+	
+	public Preference getPreference() {
+		return preference;
+	}
+	
+	public static class Preference {
+		@JsonProperty("gender")
+		private String gender;
+		
+		@JsonProperty("address")
+		private String address;
+		
+		public String getGender() {
+			return gender;
+		}
+		
+		public String getAddress() {
+			return address;
+		}
+		
 	}
 
 	@JsonProperty("profile")

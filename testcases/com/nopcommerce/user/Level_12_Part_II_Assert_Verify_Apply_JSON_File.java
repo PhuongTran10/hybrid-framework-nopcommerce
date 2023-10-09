@@ -1,5 +1,13 @@
 package com.nopcommerce.user;
 
+import java.lang.reflect.Method;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -8,26 +16,13 @@ import com.nopcommerce.data.UserDataMapper.Profile;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.nopCommerce.user.UserAddressPageObject;
 import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserLoginPageObject;
-import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
-import pageObjects.nopCommerce.user.UserRewardPointPageObject;
 import reportConfig.ExtentTestManager;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
-
-import java.lang.reflect.Method;
-
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-
-public class Level_12_Part_II_Assert_Verify_Apply_Json_File extends BaseTest{
+public class Level_12_Part_II_Assert_Verify_Apply_JSON_File extends BaseTest{
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -41,20 +36,21 @@ public class Level_12_Part_II_Assert_Verify_Apply_Json_File extends BaseTest{
 		System.out.println(userData.getProfiles().get(0).getLastName());
 		System.out.println(userData.getProfiles().get(1).getFirstName());
 		System.out.println(userData.getEmail());
+		System.out.println(userData.getPreference().getGender());
 
 	}
 	
 	@Test(dataProvider = "Data")
-	public void User_01_Register_Login(Profile userData, Method method ) {
-		String validEmail = userData.getEmail()+ generateFakeNumber() + "@gmail.com";
+	public void User_01_Register_Login(Profile profileData, Method method ) {
+		String validEmail = profileData.getEmail()+ generateFakeNumber() + "@gmail.com";
 		ExtentTestManager.startTest(method.getName(), "User_01_Register_Login");
 		ExtentTestManager.getTest().log(Status.INFO, "Register - Step 01: Click to RegisterLink");
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.inputToFirstnameTextbox(userData.getFirstName());
-		registerPage.inputToLastnameTextbox(userData.getLastName());
+		registerPage.inputToFirstnameTextbox(profileData.getFirstName());
+		registerPage.inputToLastnameTextbox(profileData.getLastName());
 		registerPage.inputToEmailTextbox(validEmail);
-		registerPage.inputToPasswordTextbox(userData.getValidPassword());
-		registerPage.inputToConfirmPasswordTextbox(userData.getValidPassword());
+		registerPage.inputToPasswordTextbox(profileData.getValidPassword());
+		registerPage.inputToConfirmPasswordTextbox(profileData.getValidPassword());
 		homePage = registerPage.clickToRegisterButton();
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(),"Your registration completed");
 		
@@ -64,13 +60,13 @@ public class Level_12_Part_II_Assert_Verify_Apply_Json_File extends BaseTest{
 	
 		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(validEmail);
-		loginPage.inputToPasswordTextbox(userData.getValidPassword());
+		loginPage.inputToPasswordTextbox(profileData.getValidPassword());
 				
 		homePage = loginPage.clickToLoginButton();
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 		
 		customerInforPage = homePage.clickToMyAccountLink();
-		Assert.assertFalse(customerInforPage.isCustomerInforHeaderDisplayed());
+		Assert.assertTrue(customerInforPage.isCustomerInforHeaderDisplayed());
 		customerInforPage.clickToLogoutLinkAtUserPage(driver);
 
 	}

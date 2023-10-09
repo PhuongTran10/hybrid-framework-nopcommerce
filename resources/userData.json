@@ -3,7 +3,7 @@
 		{
 			"firstName": "Automation",
 			"lastName": "Testing",
-			"email": "abc",
+			"email": "abcd",
 			"validPassword": "123456"
 		},
 		{
@@ -20,5 +20,10 @@
 		}
 	],
 	
-	"email": "abc"
+	"email": "abc",
+	
+	"preference" : {
+			"gender" : "male",
+			"address" : "DN city"
+	}
 }
