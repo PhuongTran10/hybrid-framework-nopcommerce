@@ -4,12 +4,12 @@
 	<listeners>
 		<listener class-name="commons.MethodListener"></listener>
 		<listener class-name="reportConfig.ReportNGListener"></listener>
-	<!--	<listener class-name="reportConfig.ExtentTestListener"></listener>
+	<!--<listener class-name="reportConfig.ExtentTestListener"></listener>
 		<listener class-name="reportConfig.AllureTestListener"></listener>-->
 		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
 	</listeners>
-	<parameter name="environment" value="dev" />
+		<parameter name="environment" value="staging" />
 	<!--<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
@@ -19,7 +19,7 @@
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.nopcommerce.user.Level_12_Part_II_Assert_Verify_Apply_JSON_File" />
+			<class name="com.nopcommerce.user.Level_23_Multiple_Environment_Part_II_Owner" />
 		</classes>
 	</test>
 </suite>

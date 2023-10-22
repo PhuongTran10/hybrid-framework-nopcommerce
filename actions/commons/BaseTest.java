@@ -132,18 +132,29 @@ public class BaseTest {
 	}
 
 	protected String getEnvironmentUrl(String environmentName) {
-		String url = null;
-		switch (environmentName) {
-		case "dev":
-			url = GlobalConstants.USER_DEV_URL;
+		String envUrl = null;
+		EnvironmentList environment = EnvironmentList.valueOf(environmentName.toUpperCase());
+		switch (environment) {
+		case DEV:
+			envUrl = GlobalConstants.USER_DEV_URL;
 			break;
-		case "demo":
-			url = GlobalConstants.USER_DEMO_URL;
+		case TESTING:
+			envUrl = GlobalConstants.USER_DEMO_URL;
+			break;
+		case STAGING:
+			envUrl = GlobalConstants.USER_DEMO_URL;
+			break;
+		case PRE_PROD:
+			envUrl = GlobalConstants.USER_DEMO_URL;
+			break;
+		case PROD:
+			envUrl = GlobalConstants.USER_DEMO_URL;
 			break;
 		default:
+			envUrl = null;
 			break;
 		}
-		return url;
+		return envUrl;
 	}
 
 	public static int generateFakeNumber() {

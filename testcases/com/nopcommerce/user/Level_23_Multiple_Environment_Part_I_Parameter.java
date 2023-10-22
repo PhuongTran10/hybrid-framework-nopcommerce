@@ -16,12 +16,13 @@ import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserLoginPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
-public class Level_19_Pattern_Object extends BaseTest{
+public class Level_23_Multiple_Environment_Part_I_Parameter extends BaseTest{
 	
-	@Parameters("browser")
+	
+	@Parameters({"browser", "environment"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String environmentName) {
+		driver = getBrowserDriver(browserName, environmentName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		firstName = UserData_No_SubClass.FIRSTNAME;

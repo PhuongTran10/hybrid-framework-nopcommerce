@@ -33,10 +33,18 @@ import pageUIs.nopCommerce.user.UserBasePageUI;
 import pageUIs.wordpress.admin.AdminLoginPageUI;
 
 public class BasePage {
+	public BasePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public BasePage() {
+		
+	}
+
 	public static BasePage getBasePageObject() {
 		return new BasePage();
 	}
-
+	
 	public void openPageUrl(WebDriver driver, String pageUrl) {
 		driver.get(pageUrl);
 	}
@@ -571,5 +579,6 @@ public class BasePage {
 	}
 
 	public long longTimeout = GlobalConstants.LONG_TIMEOUT;
+	private WebDriver driver;
 
 }
