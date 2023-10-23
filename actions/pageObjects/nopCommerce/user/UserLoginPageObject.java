@@ -11,6 +11,7 @@ public class UserLoginPageObject extends BasePage{
 	private WebDriver driver;
 	
 	public UserLoginPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
