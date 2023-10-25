@@ -35,6 +35,7 @@ public class BaseTest {
 	public void initBeforeSuit() {
 		deleteAllFileInFolder("reportNGImages");
 		deleteAllFileInFolder("allure-json");
+		deleteAllFileInFolder("allure-results");
 		deleteAllFileInFolder("logs");
 	}
 

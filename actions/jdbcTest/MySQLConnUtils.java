@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class MySQLConnUtils {
 		public static Connection getMySQLConnection() {
 			String hostName = "localhost";
-			String dbName = "automationtestdb";
+			String dbName = "automationtest";
 			String userName = "root";
 			String password = "";
 			return getMySQLConnection(hostName, dbName, userName, password);
