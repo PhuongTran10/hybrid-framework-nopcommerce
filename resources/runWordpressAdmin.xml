@@ -14,7 +14,7 @@
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.wordpress.admin.Post_01_Create_Read_Update_Delete_Search" />
+			<class name="com.wordpress.admin.User_01_View_User" />
 		</classes>
 	</test>
 </suite>

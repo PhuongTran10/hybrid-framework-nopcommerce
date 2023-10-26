@@ -14,6 +14,7 @@ import pageObjects.wordpress.AdminDashboardPO;
 import pageObjects.wordpress.AdminLoginPO;
 import pageObjects.wordpress.AdminPostAddNewPO;
 import pageObjects.wordpress.AdminPostSearchPO;
+import pageObjects.wordpress.AdminUserPO;
 import pageObjects.wordpress.PageGeneratorManager;
 import pageObjects.wordpress.UserHomePO;
 import pageObjects.wordpress.UserPostDetailPO;
@@ -25,11 +26,6 @@ public class User_01_View_User extends BaseTest{
 	String adminPassword = "automationtest";
 	String searchPostUrl;
 	int randomNumber = generateFakeNumber();
-	String postTitle = "Live Coding Title " + randomNumber;
-	String postBody = "Live Coding Body " + randomNumber;
-	String editPostTitle = "Edit Title " + randomNumber;
-	String editPostBody = "Edit Body " + randomNumber;
-	String authorName = "Automation Test";
 	String adminUrl, endUserUrl;	
 	String currentDate = getCurrentDate();
 	@Parameters({"browser", "adminUrl", "userUrl"})
@@ -53,29 +49,20 @@ public class User_01_View_User extends BaseTest{
 	
 	@Test
 	public void TC_01_View_User() {
-		log.info("Create_Post - Step 01: Click to 'Posts' menu link");
-		adminPostSearchPage =  adminDashboardPage.clickToPostMenuLink();
+		log.info("View_User - Step 01: Click to 'User' menu link");
+		adminUserPage =  adminDashboardPage.clickToUserMenuLink();
 		
-		log.info("Create_Post - Step 02: Get 'Search Post' page Url");
-		searchPostUrl = adminPostSearchPage.getCurrentPageUrl(driver);
+		log.info("View_User - Step 02: Get all user from UI");
+		int totalNumberUserAtUI = adminUserPage.getUserNumberAtUI();
 		
-		log.info("Create_Post - Step 03: Click to 'Add New' button ");
-		adminPostAddNewPage = adminPostSearchPage.clickToAddNewButton();
+		log.info("View_User - Step 03: Get all user from DB");
+		int totalNumberUserAtDB = adminUserPage.getUserNumberAtDB();
 		
-		log.info("Create_Post - Step 04: Enter to post title");
-		adminPostAddNewPage.enterToAddNewPostTitle(postTitle);
-	
-		log.info("Create_Post - Step 05: Enter to body");
-		adminPostAddNewPage.enterToAddNewPostBody(postBody);
+		log.info("View_User - Step 04: Verify users are matching");
+		verifyEquals(totalNumberUserAtUI, totalNumberUserAtDB);
 		
-		log.info("Create_Post - Step 06: Click to 'Publish' button");
-		adminPostAddNewPage.clickToPublishOrUpdateButton();
-		
-		log.info("Create_Post - Step 07: Click to 'Publish' button pre-publish");
-		adminPostAddNewPage.clickToPrePublishButton();
-		
-		log.info("Create_Post - Step 08: Verify 'Post published' message is displayed");
-		verifyTrue(adminPostAddNewPage.isPostPublishedMessageDisplayed("Post published."));
+		log.info("View_User - Step 05: Verify only 1 user matching");
+		verifyTrue(adminUserPage.checkTotalRecordFromDB(adminUsername, "roleAdmin"));
 	}
 	
 	
@@ -88,8 +75,8 @@ public class User_01_View_User extends BaseTest{
 	public static Set<Cookie> LoggedCookies;
 	private AdminLoginPO adminLoginPage;
 	private AdminDashboardPO adminDashboardPage;
-	private AdminPostSearchPO adminPostSearchPage;
-	private AdminPostAddNewPO adminPostAddNewPage;
+	private AdminUserPO adminUserPage;
+	
 	
 	
 }
