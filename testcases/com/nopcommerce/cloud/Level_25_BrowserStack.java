@@ -1,4 +1,4 @@
-package com.nopcommerce.grid;
+package com.nopcommerce.cloud;
 
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +18,7 @@ import pageObjects.nopCommerce.user.UserLoginPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 import utilities.Environment;
 
-public class Level_24_Grid extends BaseTest{
+public class Level_25_BrowserStack extends BaseTest{
 	
 	Environment environment;
 	@Parameters({"browser", "environment", "osName", "ipAddress", "port"})
