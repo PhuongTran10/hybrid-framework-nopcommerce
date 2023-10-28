@@ -16,7 +16,7 @@
         <parameter name="browser" value="chrome" />
         <parameter name="osName" value="windows" />
         <parameter name="ipAddress" value="192.168.100.100" />
- 		<parameter name="port" value="5555" />
+ 		<parameter name="port" value="6666" />
         <classes>
             <class name="com.nopcommerce.grid.Level_24_Grid" />
         </classes>
