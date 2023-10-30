@@ -27,7 +27,7 @@ public class Level_24_Grid extends BaseTest{
 		ConfigFactory.setProperty("env", environmentName);
 		//Create instance of Environment interface (Owner)
 		environment = ConfigFactory.create(Environment.class);
-		
+		System.out.println(environment.Url());
 		driver = getBrowserDriverGrid(browserName, environment.Url(), osName, ipAddress, port);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
@@ -42,6 +42,7 @@ public class Level_24_Grid extends BaseTest{
 		month = UserData_No_SubClass.MONTH;
 		year = UserData_No_SubClass.YEAR;
 		gender = UserData_No_SubClass.GENDER;
+		
 		
 	}
 	

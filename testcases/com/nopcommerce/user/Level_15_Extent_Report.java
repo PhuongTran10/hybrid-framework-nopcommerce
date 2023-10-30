@@ -29,7 +29,7 @@ public class Level_15_Extent_Report extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		firstName = "Automation";

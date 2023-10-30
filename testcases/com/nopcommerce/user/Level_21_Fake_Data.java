@@ -36,7 +36,7 @@ public class Level_21_Fake_Data extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		dataFaker = DataHelper.getDataHelper();

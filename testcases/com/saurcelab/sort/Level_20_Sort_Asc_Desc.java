@@ -17,7 +17,7 @@ public class Level_20_Sort_Asc_Desc extends BaseTest {
 	@Parameters({ "browser", "url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String saurcelabUrl) {
-		driver = getBrowserDriver(browserName, saurcelabUrl);
+		driver = getBrowserDriverLocal(browserName, saurcelabUrl);
 		loginPage = PageGeneratorManager.getLoginPage(driver);
 
 		loginPage.inputToTextboxByID(driver, "standard_user", "user-name");

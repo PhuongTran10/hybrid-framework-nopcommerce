@@ -32,7 +32,7 @@ public class Level_16_Allure_Report extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		firstName = "Automation";

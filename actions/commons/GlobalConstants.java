@@ -23,6 +23,12 @@ public class GlobalConstants {
 	public static final String DB_TEST_URL = "32.18.195.23:9860";
 	public static final String DB_TEST_USER = "AutomationTest";
 	public static final String DB_TEST_PASS = "123456";
+	
+	public static final String USERNAME = (System.getenv("BROWSERSTACK_USERNAME") != null) ? System.getenv("BROWSERSTACK_USERNAME") : "phuongtran_stdJlX";
+	public static final String AUTOMATE_KEY = (System.getenv("BROWSERSTACK_ACCESS_KEY") != null) ? System.getenv("BROWSERSTACK_ACCESS_KEY") : "pXwTKcXqjHxNxEddZAXB";
+	// declare remote URL in a variable
+	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
+	
 	public static final  long SHORT_TIMEOUT = 5;
 	public static final  long LONG_TIMEOUT = 30;
 	public static final  long RETRY_TEST_FAIL = 3;

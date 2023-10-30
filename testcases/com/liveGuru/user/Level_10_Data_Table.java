@@ -22,7 +22,7 @@ public class Level_10_Data_Table extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getHomPage(driver);
 		emailValid = "abc" + generateFakeNumber() + "@gmail.com";
 		password = "123456";

@@ -22,7 +22,7 @@ public class Level_23_Multiple_Environment_Part_I_Parameter extends BaseTest{
 	@Parameters({"browser", "environment"})
 	@BeforeClass
 	public void beforeClass(String browserName, String environmentName) {
-		driver = getBrowserDriver(browserName, environmentName);
+		driver = getBrowserDriverLocal(browserName, environmentName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		firstName = UserData_No_SubClass.FIRSTNAME;

@@ -16,7 +16,7 @@ public class Level_13_Element_Undisplay extends BaseTest{
 	@Parameters({"browser","url"})
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
-		driver = getBrowserDriver(browserName,appUrl);
+		driver = getBrowserDriverLocal(browserName,appUrl);
 		loginPage = PageGeneratorManager.getLoginPage(driver);
 				
 		firstName = "Automation";

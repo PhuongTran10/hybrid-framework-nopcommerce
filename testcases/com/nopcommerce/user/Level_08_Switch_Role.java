@@ -23,7 +23,7 @@ public class Level_08_Switch_Role extends BaseTest{
 	@Parameters({"browser", "environment"})
 	@BeforeClass
 	public void beforeClass(String browserName, String environment) {
-		driver = getBrowserDriver(browserName,environment);
+		driver = getBrowserDriverLocal(browserName,environment);
 		useHomePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		firstName = "Automation";

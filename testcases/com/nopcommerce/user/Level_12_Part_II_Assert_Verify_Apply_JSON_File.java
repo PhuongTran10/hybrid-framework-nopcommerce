@@ -27,7 +27,7 @@ public class Level_12_Part_II_Assert_Verify_Apply_JSON_File extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		userData = UserDataMapper.getUserData();
 		

@@ -37,7 +37,7 @@ public class Level_22_Manage_Data_III_No_Sub_Class extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		firstName = UserData_No_SubClass.FIRSTNAME;

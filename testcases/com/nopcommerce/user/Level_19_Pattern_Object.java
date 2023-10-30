@@ -21,7 +21,7 @@ public class Level_19_Pattern_Object extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 				
 		firstName = UserData_No_SubClass.FIRSTNAME;

@@ -28,7 +28,7 @@ public class Level_23_Multiple_Environment_Part_II_Owner extends BaseTest{
 		//Create instance of Environment interface (Owner)
 		environment = ConfigFactory.create(Environment.class);
 		
-		driver = getBrowserDriver(browserName, environment.Url());
+		driver = getBrowserDriverLocal(browserName, environment.Url());
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		System.out.println(environment.dbHostName());

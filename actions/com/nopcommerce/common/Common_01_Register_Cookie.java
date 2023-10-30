@@ -27,7 +27,7 @@ public class Common_01_Register_Cookie extends BaseTest{
 	@Parameters("browser")
 	@BeforeTest(description = "Create new user for all test classes")
 	public void Register(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		firstName = "Automation";
 		lastName = "Testing";

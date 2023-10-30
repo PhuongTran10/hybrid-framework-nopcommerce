@@ -20,7 +20,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = new UserHomePageObject(driver);
 		firstName = "Automation";
 		lastName = "Testing";

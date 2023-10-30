@@ -1,11 +1,5 @@
 package com.nopcommerce.cloud;
 
-import org.aeonbits.owner.ConfigFactory;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.nopcommerce.data.UserData_No_SubClass;
@@ -16,23 +10,22 @@ import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserLoginPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
-import utilities.Environment;
 
-public class Level_25_BrowserStack extends BaseTest{
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+
+public class Level_25_Test_On_Browserstack extends BaseTest{
 	
-	Environment environment;
-	@Parameters({"browser", "environment", "osName", "ipAddress", "port"})
+	@Parameters({"browser","url", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName, String environmentName, String osName, String ipAddress, String port) {
-		ConfigFactory.setProperty("env", environmentName);
-		//Create instance of Environment interface (Owner)
-		environment = ConfigFactory.create(Environment.class);
-		
-		driver = getBrowserDriverGrid(browserName, environment.Url(), osName, ipAddress, port);
+	public void beforeClass(String envName, String serverName, String browserName, String ipAddress, String portNumber, String osName, String osVersion) {
+		driver = getBrowserDriver(browserName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
+		System.out.println(browserName +"   " + osName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-		
-		System.out.println(environment.dbHostName());
-		System.out.println(environment.dbUserName());
 				
 		firstName = UserData_No_SubClass.FIRSTNAME;
 		lastName = UserData_No_SubClass.LASTNAME;

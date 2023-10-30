@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Nopcommerce UI Automation Testing" parallel="tests" thread-count="3">
+<suite name="Nopcommerce UI Automation Testing" >
 
 
 <!--    <test name="Run on Edge">-->
@@ -11,9 +11,9 @@
 <!--            <class name="grid.Level_00_Register_Login_Step_By_Step" />-->
 <!--        </classes>-->
 <!--    </test>-->
-  <parameter name="environment" value="testing" />
+ 	<parameter name="environment" value="staging" />
     <test name="Run on Chrome">
-        <parameter name="browser" value="chrome" />
+        <parameter name="browser" value="firefox" />
         <parameter name="osName" value="windows" />
         <parameter name="ipAddress" value="192.168.100.100" />
  		<parameter name="port" value="6666" />

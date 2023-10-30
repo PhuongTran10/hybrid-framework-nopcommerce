@@ -35,7 +35,7 @@ public class Level_17_Share_Data_02_Cookie extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriverLocal(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		firstName = "Automation";
 		lastName = "Testing";

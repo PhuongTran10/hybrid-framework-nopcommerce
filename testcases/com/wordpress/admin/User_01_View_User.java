@@ -34,7 +34,7 @@ public class User_01_View_User extends BaseTest{
 		log.info("Pre-Condition - Step 01: Open browser and admin site");
 		this.adminUrl = adminUrl;
 		this.endUserUrl = endUserUrl;
-		driver = getBrowserDriver(browserName, adminUrl);
+		driver = getBrowserDriverLocal(browserName, adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
 		log.info("Pre-Condition - Step 02: Enter to Username textbox with value: " + adminUsername);

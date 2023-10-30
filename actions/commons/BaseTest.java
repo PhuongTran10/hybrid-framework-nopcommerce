@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +25,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.log.Log;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -33,6 +33,12 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
+
+import factoryEnvironment.BrowserList;
+import factoryEnvironment.BrowserstackFactory;
+import factoryEnvironment.EnvironmentList;
+import factoryEnvironment.GridFactory;
+import factoryEnvironment.LocalFactory;
 
 public class BaseTest {
 
@@ -47,8 +53,31 @@ public class BaseTest {
 	protected BaseTest() {
 		log = LogManager.getLogger(getClass());
 	}
+	
+	protected WebDriver getBrowserDriver(String envName, String serverName, String browserName, String ipAddress, String portNumber, String osName, String osVersion) {
+		switch (envName) {
+		case "local":
+			driver = new LocalFactory(browserName).createDriver();
+			break;
+		case "grid":
+			driver = new GridFactory(browserName, ipAddress, portNumber).createDriver();
+			break;
+		case "browserstack":
+			driver = new BrowserstackFactory(browserName, osName, osVersion).createDriver();
+			break;
+		
+		default:
+			driver = new LocalFactory(browserName).createDriver();
+			break;
+		}
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+		driver.manage().window().maximize();
+		driver.get(getEnvironmentUrl(serverName));
+		return driver;
+	}
 
-	protected WebDriver getBrowserDriver(String browserName) {
+	protected WebDriver getBrowserDriverLocal(String browserName) {
 		BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
 
 		switch (browserList) {
@@ -102,7 +131,7 @@ public class BaseTest {
 		return driver;
 	}
 
-	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
+	protected WebDriver getBrowserDriverLocal(String browserName, String appUrl) {
 	
 		if (browserName.equals("firefox")) {
 			driver = new FirefoxDriver();
@@ -135,7 +164,7 @@ public class BaseTest {
 	
 	protected WebDriver getBrowserDriverGrid(String browserName, String appUrl, String osName, String ipAddress, String port) {
 		
-		DesiredCapabilities capability = null;
+		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         Platform platform = null;
 
         if (osName.contains("windows")) {
@@ -146,22 +175,16 @@ public class BaseTest {
 
         switch (browserName) {
             case "firefox" :
-                FirefoxOptions options = new FirefoxOptions();
-                capability.setBrowserName("firefox");
-                capability.setPlatform(platform);
-                options.merge(capability);
+                desiredCapabilities.setBrowserName("firefox");
+                desiredCapabilities.setPlatform(platform);
                 break;
             case "chrome" :
-                ChromeOptions cOptions = new ChromeOptions();
-                capability.setBrowserName("chrome");
-                capability.setPlatform(platform);
-                cOptions.merge(capability);
+                desiredCapabilities.setBrowserName("chrome");
+                desiredCapabilities.setPlatform(platform);
                 break;
             case "edge" :
-                EdgeOptions eOptions = new EdgeOptions();
-                capability.setBrowserName("edge");
-                capability.setPlatform(platform);
-                eOptions.merge(capability);
+                desiredCapabilities.setBrowserName("edge");
+                desiredCapabilities.setPlatform(platform);
                 break;
             default :
                 throw new RuntimeException("Browser is not valid!");
@@ -169,7 +192,7 @@ public class BaseTest {
 
         try {
             // new browser Driver here
-            driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/wd/hub", ipAddress, port)), capability);
+            driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/wd/hub", ipAddress, port)), desiredCapabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -178,14 +201,14 @@ public class BaseTest {
 		driver.get(appUrl);
 		return driver;
 	}
-
+	
 	public WebDriver getDriverInstance() {
 		return driver;
 	}
 
-	protected String getEnvironmentUrl(String environmentName) {
+	protected String getEnvironmentUrl(String serverName) {
 		String envUrl = null;
-		EnvironmentList environment = EnvironmentList.valueOf(environmentName.toUpperCase());
+		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
 		switch (environment) {
 		case DEV:
 			envUrl = GlobalConstants.USER_DEV_URL;
