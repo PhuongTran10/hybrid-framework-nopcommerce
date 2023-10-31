@@ -1,19 +1,19 @@
 package factoryEnvironment;
 
 import java.time.Duration;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.safari.SafariDriver;
 
 import commons.GlobalConstants;
+import factoryBrowser.BrowserList;
+import factoryBrowser.BrowserNotSupportedException;
+import factoryBrowser.ChromeDriverManager;
+import factoryBrowser.EdgeDriverManager;
+import factoryBrowser.FirefoxDriverManager;
+import factoryBrowser.HeadlessFirefoxDriverManager;
+import factoryBrowser.SafariDriverManager;
 
 public class LocalFactory {
 	private String browserName;
@@ -28,29 +28,13 @@ public class LocalFactory {
 
 		switch (browserList) {
 		case FIREFOX:	
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriverManager().getBrowserDriver();
 			break;
 		case CHROME:		
-			ChromeOptions optionsChrome = new ChromeOptions();
-			//Disable notifications
-			optionsChrome.addArguments("--disable-notifications");
-			
-			//Disable automation info bar
-			optionsChrome.setExperimentalOption("useAutomationExtension", false);
-			optionsChrome.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-			
-			//Disable save password popup
-			Map<String, Object> prefs = new HashMap<String, Object>();
-			prefs.put("credentials_enable_service", false);
-			prefs.put("profile.password_manager_enabled", false);
-			optionsChrome.setExperimentalOption("prefs", prefs);
-			
-			driver = new ChromeDriver(optionsChrome);
+			driver = new ChromeDriverManager().getBrowserDriver();
 			break;
 		case EDGE:
-			ChromeOptions optionsEdge = new ChromeOptions();
-			optionsEdge.addArguments("--lang=vi");
-			driver = new EdgeDriver();
+			driver = new EdgeDriverManager().getBrowserDriver();
 			break;
 		case COCCOC:
 			ChromeOptions optionsCoccoc = new ChromeOptions();
@@ -58,17 +42,12 @@ public class LocalFactory {
 			driver = new ChromeDriver(optionsCoccoc);
 			break;
 		case H_FIREFOX:
-			FirefoxOptions optionsHFirefox = new FirefoxOptions();
-			optionsHFirefox.addArguments("--headless");
-			optionsHFirefox.addArguments("window-size=1920X1080");
-			driver = new FirefoxDriver(optionsHFirefox);
-			break;	
+			driver = new HeadlessFirefoxDriverManager().getBrowserDriver();
 		case SAFARI:
-			driver = new SafariDriver();
-			break;
+			driver = new SafariDriverManager().getBrowserDriver();
 			
 		default:
-			throw new RuntimeException("Browser name invalid");
+			throw new BrowserNotSupportedException(browserName);
 		}
 		//driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));

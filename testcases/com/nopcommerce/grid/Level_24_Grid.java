@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -21,10 +22,10 @@ import utilities.Environment;
 public class Level_24_Grid extends BaseTest{
 	
 	Environment environment;
-	@Parameters({"browser", "environment", "osName", "ipAddress", "port"})
+	@Parameters({"envName", "serverName", "browser", "ipAddress", "port", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName, String environmentName, String osName, String ipAddress, String port) {
-		ConfigFactory.setProperty("env", environmentName);
+	public void beforeClass(@Optional("local")String envName, @Optional("dev")String serverName, @Optional("chrome")String browserName, @Optional("localhost")String ipAddress, @Optional("4444")String port, @Optional("Windows")String osName, @Optional("10")String osVersion) {
+		ConfigFactory.setProperty("env", serverName);
 		//Create instance of Environment interface (Owner)
 		environment = ConfigFactory.create(Environment.class);
 		System.out.println(environment.Url());

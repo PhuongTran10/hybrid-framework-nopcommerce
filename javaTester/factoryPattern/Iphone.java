@@ -12,5 +12,4 @@ public class Iphone extends PhoneFactory {
 		return super.phoneName;
 	}
 	
-	
 }

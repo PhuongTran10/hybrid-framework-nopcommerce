@@ -9,7 +9,7 @@
 		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
 	</listeners>
-		<parameter name="environment" value="staging" />
+		<parameter name="environment" value="dev" />
 	<!--<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
@@ -17,7 +17,7 @@
 		</classes>
 	</test>-->
 	<test name="Run on Chrome">
-		<parameter name="browser" value="chrome" />
+		<parameter name="browser" value="coccoc" />
 		<classes>
 			<class name="com.nopcommerce.user.Level_23_Multiple_Environment_Part_II_Owner" />
 		</classes>

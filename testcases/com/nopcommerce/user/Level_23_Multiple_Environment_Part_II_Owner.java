@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -21,14 +22,14 @@ import utilities.Environment;
 public class Level_23_Multiple_Environment_Part_II_Owner extends BaseTest{
 	
 	Environment environment;
-	@Parameters({"browser", "environment"})
+	@Parameters({"envName", "serverName", "browser", "ipAddress", "port", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(String browserName, String environmentName) {
-		ConfigFactory.setProperty("env", environmentName);
+	public void beforeClass(@Optional("local")String envName, @Optional("dev")String serverName, @Optional("chrome")String browserName, @Optional("localhost")String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
+		ConfigFactory.setProperty("env", envName);
 		//Create instance of Environment interface (Owner)
 		environment = ConfigFactory.create(Environment.class);
 		
-		driver = getBrowserDriverLocal(browserName, environment.Url());
+		driver = getBrowserDriver(browserName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		System.out.println(environment.dbHostName());

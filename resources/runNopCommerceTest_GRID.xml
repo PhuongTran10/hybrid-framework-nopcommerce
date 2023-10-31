@@ -11,7 +11,8 @@
 <!--            <class name="grid.Level_00_Register_Login_Step_By_Step" />-->
 <!--        </classes>-->
 <!--    </test>-->
- 	<parameter name="environment" value="staging" />
+ 	<parameter name="envName" value="grid" />
+ 	<parameter name="serverName" value="dev" />
     <test name="Run on Chrome">
         <parameter name="browser" value="firefox" />
         <parameter name="osName" value="windows" />
