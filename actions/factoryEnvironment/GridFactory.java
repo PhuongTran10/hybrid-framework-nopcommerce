@@ -34,12 +34,12 @@ public class GridFactory {
 	
 	public WebDriver createDriver() {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        Platform platform = null;
+        Platform platform = Platform.ANY;
 
         if (GlobalConstants.OS_NAME.contains("windows")) {
-            platform = Platform.WINDOWS;
+            platform = Platform.ANY;
         } else {
-            platform = Platform.MAC;
+            platform = Platform.ANY;
         }
 
         switch (browserName) {
@@ -61,7 +61,7 @@ public class GridFactory {
 
         try {
             // new browser Driver here
-            driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/wd/hub", ipAddress, portNumber)), desiredCapabilities);
+            driver = new RemoteWebDriver(new URL(String.format("http://%s:%s", ipAddress, portNumber)), desiredCapabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

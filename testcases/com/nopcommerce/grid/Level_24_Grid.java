@@ -24,12 +24,12 @@ public class Level_24_Grid extends BaseTest{
 	Environment environment;
 	@Parameters({"envName", "serverName", "browser", "ipAddress", "port", "osName", "osVersion"})
 	@BeforeClass
-	public void beforeClass(@Optional("local")String envName, @Optional("dev")String serverName, @Optional("chrome")String browserName, @Optional("localhost")String ipAddress, @Optional("4444")String port, @Optional("Windows")String osName, @Optional("10")String osVersion) {
+	public void beforeClass(@Optional("local")String envName, @Optional("dev")String serverName, @Optional("chrome")String browserName, @Optional("localhost")String ipAddress, @Optional("4444")String portNumber, @Optional("Windows")String osName, @Optional("10")String osVersion) {
 		ConfigFactory.setProperty("env", serverName);
 		//Create instance of Environment interface (Owner)
 		environment = ConfigFactory.create(Environment.class);
 		System.out.println(environment.Url());
-		driver = getBrowserDriverGrid(browserName, environment.Url(), osName, ipAddress, port);
+		driver = getBrowserDriver(envName, serverName, browserName, ipAddress, portNumber, osName, osVersion);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		System.out.println(environment.dbHostName());
