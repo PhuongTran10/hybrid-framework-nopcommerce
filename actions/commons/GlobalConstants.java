@@ -2,11 +2,27 @@ package commons;
 
 import java.io.File;
 
+import lombok.Getter;
+
+
+@Getter
 public class GlobalConstants {
-	public static final String USER_DEV_URL = "https://demo.nopcommerce.com";
-	public static final String ADMIN_DEV_URL = "https://admin-demo.nopcommerce.com";
-	public static final String USER_DEMO_URL = "https://demo.nopcommerce.com";
-	public static final String ADMIN_DEMO_URL = "https://admin-demo.nopcommerce.com";
+	private static GlobalConstants globalInstance;
+	private GlobalConstants() {
+		
+	}
+	public static synchronized GlobalConstants getGlobalConstants() {
+		if(globalInstance == null) {
+			globalInstance = new GlobalConstants();
+		}
+		return globalInstance;
+	}
+	
+	
+	private final String user_dev_url = "https://demo.nopcommerce.com";
+	private final String admin_dev_url = "https://admin-demo.nopcommerce.com";
+	private final String user_demo_url = "https://demo.nopcommerce.com";
+	private final String admin_demo_url = "https://admin-demo.nopcommerce.com";
 	public static final String USER_DEV_URL_LIVE_GURU = "http://live.techpanda.org/index.php/";
 	public static final String ADMIN_DEV_URL_LIVE_GURU  = "http://live.techpanda.org/index.php/backendlogin/customer/";
 	public static final String PROJECT_PATH = System.getProperty("user.dir");

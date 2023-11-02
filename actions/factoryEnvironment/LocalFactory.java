@@ -3,13 +3,12 @@ package factoryEnvironment;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import commons.GlobalConstants;
 import factoryBrowser.BrowserList;
 import factoryBrowser.BrowserNotSupportedException;
 import factoryBrowser.ChromeDriverManager;
+import factoryBrowser.CoccocDriverManager;
 import factoryBrowser.EdgeDriverManager;
 import factoryBrowser.FirefoxDriverManager;
 import factoryBrowser.HeadlessFirefoxDriverManager;
@@ -37,9 +36,7 @@ public class LocalFactory {
 			driver = new EdgeDriverManager().getBrowserDriver();
 			break;
 		case COCCOC:
-			ChromeOptions optionsCoccoc = new ChromeOptions();
-			optionsCoccoc.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
-			driver = new ChromeDriver(optionsCoccoc);
+			driver = new CoccocDriverManager().getBrowserDriver();
 			break;
 		case H_FIREFOX:
 			driver = new HeadlessFirefoxDriverManager().getBrowserDriver();
@@ -52,7 +49,7 @@ public class LocalFactory {
 		//driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.manage().window().maximize();
-		driver.get(GlobalConstants.USER_DEV_URL);
+		driver.get(GlobalConstants.getGlobalConstants().getUser_dev_url());
 		return driver;
 	}
 	

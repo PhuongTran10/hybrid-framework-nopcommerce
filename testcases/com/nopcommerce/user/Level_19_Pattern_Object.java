@@ -33,6 +33,7 @@ public class Level_19_Pattern_Object extends BaseTest{
 		year = UserData_No_SubClass.YEAR;
 		gender = UserData_No_SubClass.GENDER;
 		
+		System.out.printf("Luồng: %s - id: %d \n", Thread.currentThread().getName(), Thread.currentThread().getId());
 	}
 	
 	@Test

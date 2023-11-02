@@ -127,7 +127,7 @@ public abstract class BaseTest {
 		//driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.manage().window().maximize();
-		driver.get(GlobalConstants.USER_DEV_URL);
+		driver.get(GlobalConstants.getGlobalConstants().getUser_dev_url());
 		return driver;
 	}
 
@@ -211,19 +211,19 @@ public abstract class BaseTest {
 		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
 		switch (environment) {
 		case DEV:
-			envUrl = GlobalConstants.USER_DEV_URL;
+			envUrl = GlobalConstants.getGlobalConstants().getUser_dev_url();
 			break;
 		case TESTING:
-			envUrl = GlobalConstants.USER_DEMO_URL;
+			envUrl = GlobalConstants.getGlobalConstants().getUser_demo_url();
 			break;
 		case STAGING:
-			envUrl = GlobalConstants.USER_DEMO_URL;
+			envUrl = GlobalConstants.getGlobalConstants().getUser_demo_url();
 			break;
 		case PRE_PROD:
-			envUrl = GlobalConstants.USER_DEMO_URL;
+			envUrl = GlobalConstants.getGlobalConstants().getUser_demo_url();
 			break;
 		case PROD:
-			envUrl = GlobalConstants.USER_DEMO_URL;
+			envUrl = GlobalConstants.getGlobalConstants().getUser_demo_url();
 			break;
 		default:
 			envUrl = null;

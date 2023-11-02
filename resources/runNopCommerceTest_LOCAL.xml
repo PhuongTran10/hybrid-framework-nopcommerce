@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="NopCommerce">
+<suite name="NopCommerce" parallel="tests" thread-count="2">
 	<listeners>
 		<listener class-name="commons.MethodListener"></listener>
 		<listener class-name="reportConfig.ReportNGListener"></listener>
@@ -10,16 +10,16 @@
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
 	</listeners>
 		<parameter name="environment" value="dev" />
-	<!--<test name="Run on Firefox">
+	<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.user.Level_14_Log_ReportNG" />
+			<class name="com.nopcommerce.user.Level_19_Pattern_Object" />
 		</classes>
-	</test>-->
+	</test>
 	<test name="Run on Chrome">
 		<parameter name="browser" value="coccoc" />
 		<classes>
-			<class name="com.nopcommerce.user.Level_23_Multiple_Environment_Part_II_Owner" />
+			<class name="com.nopcommerce.user.Level_19_Pattern_Object" />
 		</classes>
 	</test>
 </suite>
